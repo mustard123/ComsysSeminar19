@@ -1,0 +1,40 @@
+
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+
+\AtBeginDocument{\parindent1.0em} %!PN
+
+
+%% change sizes and margins
+\topmargin      -16.0mm
+\oddsidemargin      0mm
+\evensidemargin     0mm
+\textheight     265.0mm
+\textwidth      160.0mm
+\columnsep        4.1mm
+\parindent        1.0em
+\headsep          6.3mm
+\headheight        12pt
+\lineskip           1pt
+\normallineskip     1pt
+\def\baselinestretch{1}
+
+\marginparsep      10pt
+\marginparwidth    20pt
+\marginparpush     25pt
+
+\partopsep          \z@
+\topsep           1.3ex
+\parsep             \z@
+\itemsep            \z@
+
+
+% the command for the abstract
+\def\Kurzfassung#1{\textit{#1}}
+
+% commands for defining authors and including them to TOC and headings
+\def\chaptauthors#1{\par\vskip2mm{\it #1}\vskip13mm%
+{\def\footnote##1{}\addtocontents{toc}{\hskip5mm{\it #1}}%
+\addtocontents{toc}{}\markright{{\sl #1}}%
+}}
+
