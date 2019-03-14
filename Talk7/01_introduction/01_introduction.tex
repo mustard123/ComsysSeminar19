@@ -1,22 +1,34 @@
 \section{Introduction}
 
+\textbf{Length: around 2 pages}
+
 \begin{itemize}
-  \item Length: around 2 pages
   \item Describe current issues in cybersecurity
   \begin{itemize}
     \item Motivate the topic in general
-    \item TODO:
   \end{itemize}
   \item Provide some reasoning on the evolution of bitcoin
   \begin{itemize}
     \item Money transfer security
     \item Intermediaries
-    \item TODO:
   \end{itemize}
   \item Provide an outline of the paper
   \begin{itemize}
     \item Content structure
     \item Covered topics
-    \item{Goal of this survey is then not only to cover pure theoretical concepts or frameworks, but also to shed some light on existing real world applications or proposed system architectures that are currently beeing developed. These applications will show us whether the theoretical ideas and concepts are actually applicable in the real world as well as the associated problems and issues that arise therewith.} 
   \end{itemize}
 \end{itemize}
+
+Due to the increase of data collection in the internet and the growinh reliance on computer systems, protecting data as well as systems has become to play a major role. The rise of blockchain systems in the past decade has naturally led security researchers to start evaluating how traditional infrastructure can be protected in a blockchain context. The main goal of this work is therefore to investigate and summarize such approaches as far as they have been developed in recent years.
+
+To establish a solid foundation of knowledge, section \ref{sec:02_background} provides a summary of the most important basic concepts and background. More specifically, section \ref{subsec:02_cybersecurity} goes into the traditional concepts of cybersecurity and the main threat models that have been developed in the past decades. Section \ref{subsec:02_blockchain} then presents the basics of blockchain on the example of Bitcoin, while section \ref{subsec:02_smart_contracts} summarizes the idea of smart contracts that have evolved from blockchain technologies.
+
+On a lower, more technical level, this work focuses on the prevention of DDoS attacks, as well as the improvement of parts of the internet infrastructure. Distributed denial of service attacks (DDoS) which figure as an extension of denial of service attacks (DoS), are a possibility for attackers to overflood a service of a company. Such attacks could lead to a long downtime of a system and thus result in a major business forfeit. Approaches to DDoS protection using blockchain technologies are summarized in section \ref{subsec:03_ddos}.
+
+A critical part of internet and communications security in today's environment is the existence of secure communication methods by means of encryption and certification. Public Key Infrastructures provide the backbone for many of these methods. However, they often rely on some kind of centralized infrastructure, which enables many kinds of attacks and makes the entire infrastructure susceptible to DDoS. Researchers have recently started investigating possible improvements of said infrastructure with blockchain technologies. We will provide an overview of said research in section \ref{subsec:03_pki}.
+
+Next to secure communications, the internet infrastructure is also susceptible to attacks on a networking-level. The DNS and BGP protocols are key parts of the majority of communications over the internet. Improving the reliability and security of these protocols has been one of the first application areas of blockchain in cybersecurity, as the inherent decentralization of blockchain could solve many of the problems found in said protocols. Section \ref{subsec:03_dns} summarizes approaches that have been presented so far. We specifically focus on the DNS infrastructure, but also include a short excursion into the less-researched BGP infrastructure.
+
+TODO: summarize IoT
+
+Goal of this survey is then not only to cover pure theoretical concepts or frameworks, but also to shed some light on existing real world applications or proposed system architectures that are currently beeing developed (\ref{subsec:03_applications}). These applications will show us whether the theoretical ideas and concepts are actually applicable in the real world as well as the associated problems and issues that arise therewith.
