@@ -10,6 +10,7 @@ A DDoS (Distributed Denial of Service) attack has become a popular way to crippl
     \item No enforcement of accountability: As described above, attackers can escape from accountability by using IP Spoofing mechanisms.
     \item Distribution of control: In a world of a distributed network, such as the Internet, multiple networks participate in that network. Each one of them has different security mechanisms. No global control entity can define a security policy or standard.
 \end{itemize}
+% TODO Additional reasons
 
 % Explaining DDoS
 By deploying multiple attacking entities, attackers using DDoS try to overflood a service and prevent others the use of that service. More precisely, they send a stream of packets to the victims, which consume the hardware resources and therefore make it unavailable for legitimate clients to access the service. Another popular way for an attacker is to send malformed packets to shut down the availability of the service. Those packets confuse the web application or some protocols on the victims' hardware and force the server to reboot. There are probably some additional possibilities to shut down services on the internet. Such attack possibilities will be discovered first when they have been exploited in a significant attack. The procedure of a DDoS attack is split into the following phases: An attacker recruits multiple agents (clients) into which the attacker injects malicious code. Attackers often hide the identity of infected clients by using IP Spoofing mechanisms \cite{Mirkovic2004}.
@@ -17,22 +18,86 @@ By deploying multiple attacking entities, attackers using DDoS try to overflood 
 % TODO Difference DoS and DDoS?
 
 % TODO Motivation behind DDoS
-Multiple incentives exist to attack clients using DDoS attacks. Unfortunately, the main goal of such an attack is to damage the selected victim. The motives may be found in prestige (gaining respect within the hacker community when attacking popular websites), personal reasons, material gain meaning to attack competitors or political reasons \cite{Mirkovic2004}.
+Multiple incentives exist to attack clients using DDoS attacks. Unfortunately, the main goal of such an attack is to damage the selected victim. The motives may be found in prestige (gaining respect within the hacker community when attacking popular websites), personal grudges, material gain meaning to attack competitors, any political reasons or simply blackmailing others \cite{Mirkovic2004}.
 
+% TODO generalize possibilities of mitigation strategies
 
-\subsubsection{Mitigation Possibilities}
-% TODO generalize possibilities
+Various companies (known from other services) currently offer DDoS protection services, such as Cloudflare or Akami, and its number is increasing \cite{Pras2016}. For all solutions, a third party DDoS Protection Service (DPS) provider is required, resulting in extra costs, as the analysis performs in the cloud \cite{Rodrigues2017}.
 
+% TODO DOTS (DDoS Open Threat Signaling) an IETF proposal
 % TODO probably explain Gladius?
 
-\paragraph{DDos Mitigation with Smart Contracts}
-\cite{Rodrigues2017}
+In the following sections, various approaches to mitigating DDoS attacks are illustrated.
 
-\paragraph{Mitigation-as-a-service in cooperative network defenses}
-\cite{Mannhart2018}
+% TODO ordering of subsubsections?
 
-\paragraph{Blockchain Signaling System (BloSS)}
-\cite{Rodrigues2019}
+\subsubsection{DDos Mitigation with Smart Contracts}
+This concept investigates a possibility to mitigate a DDoS attack in a fully decentralized manner using smart contracts. An architecture to do so will be illustrated within this section to create an automated DDoS mitigation system \cite{Rodrigues2017}.
 
-\paragraph{Multi domain DDoS Mitgiation based on blockchains}
-\cite{Rodrigues2017a}
+As described in \ref{subsec:02_smart_contracts} a smart contract is a software that is made to help contracts being able to execute and verify on its own. To do so, there has to be an infrastructure that implements, verifies and enforces the negotiation of those smart contracts by using particular computer protocols and that runs fully decentralized. As you know from \ref{subsec:02_blockchain}, a blockchain ensures permanent storage and provides obstacles to manipulate content and is thus an ideal infrastructure for smart contracts.
+
+% Proposed System Architecture
+ % TODO describing architecture
+\begin{figure}[ht]
+  \begin{center}
+  \includegraphics[scale=0.6]{Talk7/img/ddos/collaborative_ddos_mitigation_system_architecture}
+  \end{center}
+  \caption{System Architecture}
+  \label{system_architecture}
+\end{figure}
+
+% TODO conclusion of this architecture
+
+
+\subsubsection{Mitigation-as-a-service in cooperative network defenses}
+% \cite{Mannhart2018}
+% TODO introduction about cooperative network defneses?
+When collaboratively countering DDoS attacks various Autonomous Systems (AS) are involved. As soon as a target AS detects an attack, the target requests to all participating AS's to mitigate the current attack. Subsequent, a mitigator AS, which is responsible for the range being attacked then either accepts or declines the mitigation request. By using a proof-of-mitigation the completion of the mitigation has to be confirmed and the target can pay the mitigator. As this proof-of-mitigation has to satisfy aspects of timeliness, tamper-evidence, and reproducibility this proof has to be executed automatically during the existing time-window \cite{Mannhart2018}. Additionally, any user interaction has to be excluded to ensure efficiency. Various approaches creating such proof will be described and discussed in this section.
+
+\paragraph{Marketplace of Mitigation VNFs}
+\begin{figure}[ht]
+  \begin{center}
+  \includegraphics[scale=0.6]{Talk7/img/ddos/cooperative_network_marketplace_vnfs}
+  \end{center}
+  \caption{Marketplace of Mitigation VNFs}
+  \label{ddos_marketplace_vnf}
+\end{figure}
+% TODO
+
+\paragraph{Trusted Computing}
+\begin{figure}[ht]
+  \begin{center}
+  \includegraphics[scale=0.6]{Talk7/img/ddos/cooperative_network_trusted_computing}
+  \end{center}
+  \caption{Trusted computing}
+  \label{ddos_trusted_computing}
+\end{figure}
+% TODO
+
+\paragraph{Secure logging}
+\begin{figure}[ht]
+  \begin{center}
+  \includegraphics[scale=0.6]{Talk7/img/ddos/cooperative_network_secure_logging}
+  \end{center}
+  \caption{Secure logging}
+  \label{ddos_secure_logging}
+\end{figure}
+% TODO
+
+\paragraph{Network Slicing}
+\begin{figure}[ht]
+  \begin{center}
+  \includegraphics[scale=0.6]{Talk7/img/ddos/cooperative_network_network_slicing}
+  \end{center}
+  \caption{Network Slicing}
+  \label{ddos_network_slicing}
+\end{figure}
+% TODO
+
+% Final considerations of this paper
+
+\subsubsection{Blockchain Signaling System (BloSS)}
+% \cite{Rodrigues2019}
+
+\subsubsection{Multi domain DDoS Mitgiation based on blockchains}
+% \cite{Rodrigues2017a}
