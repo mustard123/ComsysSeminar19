@@ -10,7 +10,8 @@ A DDoS (Distributed Denial of Service) attack has become a popular way to crippl
     \item No enforcement of accountability: As described above, attackers can escape from accountability by using IP Spoofing mechanisms.
     \item Distribution of control: In a world of a distributed network, such as the Internet, multiple networks participate in that network. Each one of them has different security mechanisms. No global control entity can define a security policy or standard.
 \end{itemize}
-% TODO Additional reasons
+% Additional reasons/base of attacks
+Since the number of connected devices has increased due to IoT devices such as connected cameras, or smart fridges, attackers have a growing capacity to take control of unsecured devices \cite{Rodrigues2017a}.
 
 % Explaining DDoS
 By deploying multiple attacking entities, attackers using DDoS try to overflood a service and prevent others the use of that service. More precisely, they send a stream of packets to the victims, which consume the hardware resources and therefore make it unavailable for legitimate clients to access the service. Another popular way for an attacker is to send malformed packets to shut down the availability of the service. Those packets confuse the web application or some protocols on the victims' hardware and force the server to reboot. There are probably some additional possibilities to shut down services on the internet. Such attack possibilities will be discovered first when they have been exploited in a significant attack. The procedure of a DDoS attack is split into the following phases: An attacker recruits multiple agents (clients) into which the attacker injects malicious code. Attackers often hide the identity of infected clients by using IP Spoofing mechanisms \cite{Mirkovic2004}.
@@ -24,7 +25,8 @@ Multiple incentives exist to attack clients using DDoS attacks. Unfortunately, t
 
 Various companies (known from other services) currently offer DDoS protection services, such as Cloudflare or Akami, and its number is increasing \cite{Pras2016}. For all solutions, a third party DDoS Protection Service (DPS) provider is required, resulting in extra costs, as the analysis performs in the cloud \cite{Rodrigues2017}.
 
-% TODO DOTS (DDoS Open Threat Signaling) an IETF proposal
+The Internet Engineering Task Force (IETF) additionally is proposing a protocol called DOTS (DDos Open Threat Signaling) that requires both client and server.
+% TODO More about DOTS (DDoS Open Threat Signaling) an IETF proposal
 % TODO probably explain Gladius?
 
 In the following sections, various approaches to mitigating DDoS attacks are illustrated.
@@ -55,7 +57,7 @@ As described in \ref{subsec:02_smart_contracts} a smart contract is a software t
 When collaboratively countering DDoS attacks various Autonomous Systems (AS) are involved. As soon as a target AS detects an attack, the target sends a request to all participating AS's to mitigate the current attack. Subsequent, a mitigator AS, which is responsible for the range being attacked then either accepts or declines the mitigation request. By using a proof-of-mitigation, the completion of the mitigation has to be confirmed, and the target can pay the mitigator. As this proof-of-mitigation has to satisfy aspects of timeliness, tamper-evidence, and reproducibility this proof has to be executed automatically during the current time window. Additionally, any user interaction has to be excluded to ensure efficiency \cite{Mannhart2018}. Various approaches creating such proof will be described and discussed in this section. It will be shown that no individual approach could be used to address a trade-off between practicability and security.
 
 \paragraph{Marketplace of Mitigation VNFs}
-Virtualized  Network Functions (VNF) can be deployed on any hardware. The concept of Network Function Virtualization (NFV) can, therefore, provide an efficient solution for deploying these VNFs by virtualising a single function in the network. All ASes involved in the cooperative network could load the VNF image directly from the marketplace, which then provides the mitigation service. By comparing the hashed checksum of the VNF image to a known value from the marketplace, the integrity of the VNF image will be checked. Local caching of all VNFs avoids large load on the marketplace. A big advantage of this approach is the high degree of isolation, as the VNFs consists of the minimal code which is necessary to handle the mitigation. Additionally, the VNFs can be set up on any hardware without any additional configurations. Unfortunately, the target still needs to trust that the mitigator only runs untampered VNFs directly from the marketplace \cite{Mannhart2018}.
+Virtualized  Network Functions (VNF) can be deployed on any hardware. The concept of Network Function Virtualization (NFV) can, therefore, provide an efficient solution for deploying these VNFs by virtualizing a single function in the network. All ASes involved in the cooperative network could load the VNF image directly from the marketplace, which then provides the mitigation service. By comparing the hashed checksum of the VNF image to a known value from the marketplace, the integrity of the VNF image will be checked. Local caching of all VNFs avoids large load on the marketplace. A big advantage of this approach is the high degree of isolation, as the VNFs consists of the minimal code which is necessary to handle the mitigation. Additionally, the VNFs can be set up on any hardware without any additional configurations. Unfortunately, the target still needs to trust that the mitigator only runs untampered VNFs directly from the marketplace \cite{Mannhart2018}.
 % TODO overwork
 \begin{figure}[ht]
   \begin{center}
@@ -87,7 +89,7 @@ As the mitigators can use full network infrastructure, they are allowed to creat
 % TODO
 
 \paragraph{Network Slicing}
-Since network virtualization technologies and Software-Defined Networks (SDN) have advanced in recent times they both serve as a basis for network slicing as a service. When the attack target AS requests mitigation services, it gains access to the virtualised network slice of the mitigator AS. The slice is then configured to provide access for all attacking IP addresses that have been requested within the mitigation request.
+Since network virtualization technologies and Software-Defined Networks (SDN) have advanced in recent times they both serve as a basis for network slicing as a service. When the attack target AS requests mitigation services, it gains access to the virtualized network slice of the mitigator AS. The slice is then configured to provide access for all attacking IP addresses that have been requested within the mitigation request.
 \begin{figure}[ht]
   \begin{center}
   \includegraphics[scale=0.5]{Talk7/img/ddos/cooperative_network_network_slicing}
@@ -95,12 +97,22 @@ Since network virtualization technologies and Software-Defined Networks (SDN) ha
   \caption{Network Slicing}
   \label{ddos_network_slicing}
 \end{figure}
-% TODO
 
-% Final considerations of this paper
+% Final considerations of this paper?
+
+\subsubsection{Multi domain DDoS Mitigation based on blockchains}
+% \cite{Rodrigues2017a}
+Another approach again uses Smart Contracts and therefore Blockchain as a mean to advertise information across multiple domains. The architecture as seen in figure \ref{ddos_multi_domain_architecture} involves the following entities: \textbf{Software-Defined Networks (SDN)} enable the development of customizable security management. A \textbf{Network Function Virtualization (NFV)} enforces the security policies through virtualized functions. An Ethereum-based \textbf{blockchain} is a base for all participants of the cooperative network to advertise DDoS attacks within a timeframe of 14s, as a new block is mined within that time. At last a \textbf{Smart Contracts} which is storing black or whitelisted IP addresses of customers.
+
+\begin{figure}[ht]
+  \begin{center}
+  \includegraphics[scale=0.5]{Talk7/img/ddos/multi_domain}
+  \end{center}
+  \caption{Multi-domain architecture}
+  \label{ddos_multi_domain_architecture}
+\end{figure}
+
+% TODO conclusion of paper?
 
 \subsubsection{Blockchain Signaling System (BloSS)}
 % \cite{Rodrigues2019}
-
-\subsubsection{Multi domain DDoS Mitgiation based on blockchains}
-% \cite{Rodrigues2017a}
