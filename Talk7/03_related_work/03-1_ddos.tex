@@ -18,7 +18,7 @@ By deploying multiple attacking entities, attackers using DDoS try to overflood 
 % TODO Difference DoS and DDoS?
 
 % TODO Motivation behind DDoS
-Multiple incentives exist to attack clients using DDoS attacks. Unfortunately, the main goal of such an attack is to damage the selected victim. The motives may be found in prestige (gaining respect within the hacker community when attacking popular websites), personal grudges, material gain meaning to attack competitors, any political reasons or simply blackmailing others \cite{Mirkovic2004}.
+Multiple incentives exist to attack clients using DDoS attacks. Unfortunately, the primary goal of such an attack is to damage the selected victim. The motives may be found in prestige (gaining respect within the hacker community when attacking popular websites), personal grudges, material gain meaning to attack competitors, any political reasons or merely blackmailing others \cite{Mirkovic2004}.
 
 % TODO generalize possibilities of mitigation strategies
 
@@ -34,7 +34,7 @@ In the following sections, various approaches to mitigating DDoS attacks are ill
 \subsubsection{DDos Mitigation with Smart Contracts}
 This concept investigates a possibility to mitigate a DDoS attack in a fully decentralized manner using smart contracts. An architecture to do so will be illustrated within this section to create an automated DDoS mitigation system \cite{Rodrigues2017}.
 
-As described in \ref{subsec:02_smart_contracts} a smart contract is a software that is made to help contracts being able to execute and verify on its own. To do so, there has to be an infrastructure that implements, verifies and enforces the negotiation of those smart contracts by using particular computer protocols and that runs fully decentralized. As you know from \ref{subsec:02_blockchain}, a blockchain ensures permanent storage and provides obstacles to manipulate content and is thus an ideal infrastructure for smart contracts.
+As described in \ref{subsec:02_smart_contracts} a smart contract is a software that is made to help contracts being able to execute and verify on its own. To do so, there has to be an infrastructure that implements, verifies and enforces the negotiation of those smart contracts by using particular computer protocols and that runs fully decentralized. As known from \ref{subsec:02_blockchain}, a blockchain ensures permanent storage and provides obstacles to manipulate content and is thus an ideal infrastructure for smart contracts.
 
 % Proposed System Architecture
  % TODO describing architecture
@@ -52,32 +52,34 @@ As described in \ref{subsec:02_smart_contracts} a smart contract is a software t
 \subsubsection{Mitigation-as-a-service in cooperative network defenses}
 % \cite{Mannhart2018}
 % TODO introduction about cooperative network defneses?
-When collaboratively countering DDoS attacks various Autonomous Systems (AS) are involved. As soon as a target AS detects an attack, the target requests to all participating AS's to mitigate the current attack. Subsequent, a mitigator AS, which is responsible for the range being attacked then either accepts or declines the mitigation request. By using a proof-of-mitigation the completion of the mitigation has to be confirmed and the target can pay the mitigator. As this proof-of-mitigation has to satisfy aspects of timeliness, tamper-evidence, and reproducibility this proof has to be executed automatically during the existing time-window \cite{Mannhart2018}. Additionally, any user interaction has to be excluded to ensure efficiency. Various approaches creating such proof will be described and discussed in this section.
+When collaboratively countering DDoS attacks various Autonomous Systems (AS) are involved. As soon as a target AS detects an attack, the target sends a request to all participating AS's to mitigate the current attack. Subsequent, a mitigator AS, which is responsible for the range being attacked then either accepts or declines the mitigation request. By using a proof-of-mitigation, the completion of the mitigation has to be confirmed, and the target can pay the mitigator. As this proof-of-mitigation has to satisfy aspects of timeliness, tamper-evidence, and reproducibility this proof has to be executed automatically during the current time window. Additionally, any user interaction has to be excluded to ensure efficiency \cite{Mannhart2018}. Various approaches creating such proof will be described and discussed in this section. It will be shown that no individual approach could be used to address a trade-off between practicability and security.
 
 \paragraph{Marketplace of Mitigation VNFs}
+Virtualized  Network Functions (VNF) can be deployed on any hardware. The concept of Network Function Virtualization (NFV) can, therefore, provide an efficient solution for deploying these VNFs by virtualising a single function in the network. All ASes involved in the cooperative network could load the VNF image directly from the marketplace, which then provides the mitigation service. By comparing the hashed checksum of the VNF image to a known value from the marketplace, the integrity of the VNF image will be checked. Local caching of all VNFs avoids large load on the marketplace. A big advantage of this approach is the high degree of isolation, as the VNFs consists of the minimal code which is necessary to handle the mitigation. Additionally, the VNFs can be set up on any hardware without any additional configurations. Unfortunately, the target still needs to trust that the mitigator only runs untampered VNFs directly from the marketplace \cite{Mannhart2018}.
+% TODO overwork
 \begin{figure}[ht]
   \begin{center}
-  \includegraphics[scale=0.6]{Talk7/img/ddos/cooperative_network_marketplace_vnfs}
+  \includegraphics[scale=0.5]{Talk7/img/ddos/cooperative_network_marketplace_vnfs}
   \end{center}
   \caption{Marketplace of Mitigation VNFs}
   \label{ddos_marketplace_vnf}
 \end{figure}
-% TODO
 
 \paragraph{Trusted Computing}
+So-called Trusted Platform Modules (TPM) allow secure storage of hashes that verify in the on-chip Platform Configuration Registers (PCR) that attest secure boot chain from BIOS over Bootloader. By using this approach, only the code that is approved by the cooperative defense will be run on the system. VNFs create a defense network where trusted and known VNFs always handle requests for mitigation without trusting the responsible operator that provides the mitigation service to the AS.  A big disadvantage of trusted computing is the strict hardware requirement, as the TPM is only available as a standalone chip or integrated into the motherboard.
 \begin{figure}[ht]
   \begin{center}
-  \includegraphics[scale=0.6]{Talk7/img/ddos/cooperative_network_trusted_computing}
+  \includegraphics[scale=0.5]{Talk7/img/ddos/cooperative_network_trusted_computing}
   \end{center}
   \caption{Trusted computing}
   \label{ddos_trusted_computing}
 \end{figure}
-% TODO
 
 \paragraph{Secure logging}
+As the mitigators can use full network infrastructure, they are allowed to create a proof of mitigation using the available traffic data. By having a detailed log of network activities, they could prove the successful mitigation by identifying a reduction in the traffic from the attack source to the DDoS target. A mitigation-proof based on the log files decreases the complexity of the proof. The aforementioned log file has been created on an isolated system and therefore has to be checked about its integrity by a third party. A disadvantage comes with high-volume attacks which create large log files. These large files introduce additional delays as the log files have to be transferred for remote auditing.
 \begin{figure}[ht]
   \begin{center}
-  \includegraphics[scale=0.6]{Talk7/img/ddos/cooperative_network_secure_logging}
+  \includegraphics[scale=0.5]{Talk7/img/ddos/cooperative_network_secure_logging}
   \end{center}
   \caption{Secure logging}
   \label{ddos_secure_logging}
@@ -85,9 +87,10 @@ When collaboratively countering DDoS attacks various Autonomous Systems (AS) are
 % TODO
 
 \paragraph{Network Slicing}
+Since network virtualization technologies and Software-Defined Networks (SDN) have advanced in recent times they both serve as a basis for network slicing as a service. When the attack target AS requests mitigation services, it gains access to the virtualised network slice of the mitigator AS. The slice is then configured to provide access for all attacking IP addresses that have been requested within the mitigation request.
 \begin{figure}[ht]
   \begin{center}
-  \includegraphics[scale=0.6]{Talk7/img/ddos/cooperative_network_network_slicing}
+  \includegraphics[scale=0.5]{Talk7/img/ddos/cooperative_network_network_slicing}
   \end{center}
   \caption{Network Slicing}
   \label{ddos_network_slicing}
