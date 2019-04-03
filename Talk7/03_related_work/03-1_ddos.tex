@@ -2,24 +2,27 @@
 \label{subsec:03_ddos}
 
 % Introduction describing the base of such attacks
-A DDoS (Distributed Denial of Service) attack has become a popular way to cripple a server of an institution or a private person and exposed to be an immense threat to the Internet. However, how is it possible for attackers to execute such attacks? The current internet design has its purpose of moving packets from a source to a known destination. The network itself minimally forwards all packages at minimal cost and generally outsources the complexity, including security, transport reliability and quality of service to the sender and receiver of the package. This concept has been called the end-to-end paradigm. As no intermediary entity will step in, a party (either sender or receiver) can damage its opposition by using different attack possibilities such as IP Spoofing or the aforementioned DDoS attack \cite{Mirkovic2004}. By faking the source address in the header of a packet, the sender can hide its identity. This security issue is called IP Spoofing \cite{Cloudflare2019}. As described in \citet{Mirkovic2004} following security issues raise opportunities of attacks:
+A DDoS (Distributed Denial of Service) attack has become a popular way to cripple a server of an institution or a private person and has shown to be an immense threat to the Internet. However, how is it possible for attackers to execute such attacks? The current internet design has its purpose of moving packets from a source to a known destination. The network itself minimally forwards all packages at minimal cost and generally outsources the complexity, including security, transport reliability and quality of service to the sender and receiver of the transported packages. This concept has been called the \textbf{end-to-end paradigm}. As no intermediary entity will step in, a party (either sender or receiver) can damage its opposition by using different attack possibilities such as IP Spoofing or the aforementioned DDoS attacks \cite{Mirkovic2004}. By faking the source address in the header of a packet, the sender can hide its identity. This security issue is called IP Spoofing \cite{Cloudflare2019}. As described in \citet{Mirkovic2004} following security issues raise opportunities of attacks:
 \begin{itemize}
     \item Limited internet resources: Every host or services has hardware limitations that users may consume.
     \item Highly interdependent internet security: No matter how secure a host may be configured, DDoS attacks always depend on the security of others within the Internet.
     \item No collocation of intelligence and resources: The intermediate network has plentiful resources, as they forward package at minimal costs.  In contrast, the end networks only invest in as much bandwidth as they planned to use for their services.
     \item No enforcement of accountability: As described above, attackers can escape from accountability by using IP Spoofing mechanisms.
-    \item Distribution of control: In a world of a distributed network, such as the Internet, multiple networks participate in that network. Each one of them has different security mechanisms. No global control entity can define a security policy or standard.
+    \item Distribution of control: In a world of a distributed network, such as the Internet, multiple clients participate in that network. Each one of them has different security mechanisms. No global control entity can define a security policy or standard.
 \end{itemize}
 % Additional reasons/base of attacks
 Since the number of connected devices has increased due to IoT devices such as connected cameras, or smart fridges, attackers have a growing capacity to take control of unsecured devices \cite{Rodrigues2017a}.
 
 % Explaining DDoS
-By deploying multiple attacking entities, attackers using DDoS try to overflood a service and prevent others the use of that service. More precisely, they send a stream of packets to the victims, which consume the hardware resources and therefore make it unavailable for legitimate clients to access the service. Another popular way for an attacker is to send malformed packets to shut down the availability of the service. Those packets confuse the web application or some protocols on the victims' hardware and force the server to reboot. There are probably some additional possibilities to shut down services on the internet. Such attack possibilities will be discovered first when they have been exploited in a significant attack. The procedure of a DDoS attack is split into the following phases: An attacker recruits multiple agents (clients) into which the attacker injects malicious code. Attackers often hide the identity of infected clients by using IP Spoofing mechanisms \cite{Mirkovic2004}.
+By deploying multiple attacking entities, attackers using DDoS try to overflood a service or other published web applications and prevent rightful users from accessing the application. More precisely, attackers send a stream of packets to the victims, which consume all capacity of hardware resources and therefore make it unavailable for legitimate clients to access the application. Another popular way for an attacker is to send malformed packets to shut down the availability of the service. Those packets confuse the web application or some protocols on the victims' hardware and force the server to reboot. There are probably some additional possibilities to shut down services on the internet. Such attack possibilities will be discovered first when they have been exploited in a significant attack and servers have been down for a particular time \cite{Mirkovic2004}.
+
+% DDoS procedure
+The procedure of a DDoS attack is split into the following phases: An attacker recruits multiple agents (clients) into which the attacker injects malicious code. Attackers often hide the identity of infected clients by using IP Spoofing mechanisms \cite{Mirkovic2004}.
 
 % TODO Difference DoS and DDoS?
 
 % TODO Motivation behind DDoS
-Multiple incentives exist to attack clients using DDoS attacks. Unfortunately, the primary goal of such an attack is to damage the selected victim. The motives may be found in prestige (gaining respect within the hacker community when attacking popular websites), personal grudges, material gain meaning to attack competitors, any political reasons or merely blackmailing others \cite{Mirkovic2004}.
+Multiple incentives exist to attack clients using DDoS attacks. Unfortunately, the primary goal of such an attack is to damage the selected victim. The motives may be found in prestige (gaining respect within the hacker community when attacking popular websites or services), personal hatreds, material gain (damaging competitors by attacking them), any political reasons or merely blackmailing others \cite{Mirkovic2004}.
 
 % TODO generalize possibilities of mitigation strategies
 
@@ -29,9 +32,7 @@ The Internet Engineering Task Force (IETF) additionally is proposing a protocol 
 % TODO More about DOTS (DDoS Open Threat Signaling) an IETF proposal
 % TODO probably explain Gladius?
 
-In the following sections, various approaches to mitigating DDoS attacks are illustrated.
-
-% TODO ordering of subsubsections?
+In the following sections, various approaches to mitigating DDoS attacks are illustrated as seen in popular papers.
 
 \subsubsection{DDos Mitigation with Smart Contracts}
 This concept investigates a possibility to mitigate a DDoS attack in a fully decentralized manner using smart contracts. An architecture to do so will be illustrated within this section to create an automated DDoS mitigation system \cite{Rodrigues2017}.
