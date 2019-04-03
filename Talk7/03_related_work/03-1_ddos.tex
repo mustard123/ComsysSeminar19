@@ -89,7 +89,7 @@ As the mitigators can use full network infrastructure, they are allowed to creat
 % TODO
 
 \paragraph{Network Slicing}
-Since network virtualization technologies and Software-Defined Networks (SDN) have advanced in recent times they both serve as a basis for network slicing as a service. When the attack target AS requests mitigation services, it gains access to the virtualized network slice of the mitigator AS. The slice is then configured to provide access for all attacking IP addresses that have been requested within the mitigation request.
+Since network virtualization technologies and Software-Defined Networks (SDN) have advanced in recent times, they both serve as a basis for network slicing as a service. When the attack target AS requests mitigation services, it gains access to the virtualized network slice of the mitigator AS. The slice is then configured to provide access for all attacking IP addresses that have been requested within the mitigation request.
 \begin{figure}[ht]
   \begin{center}
   \includegraphics[scale=0.5]{Talk7/img/ddos/cooperative_network_network_slicing}
@@ -116,3 +116,6 @@ Another approach again uses Smart Contracts and therefore Blockchain as a mean t
 
 \subsubsection{Blockchain Signaling System (BloSS)}
 % \cite{Rodrigues2019}
+
+Similarly to \cite{Rodrigues2017a}, this paper deals with cooperative, multi-domain DDoS defense systems, but it presents a Blockchain Signaling System (BloSS) which is a somewhat technical approach of deploying hardware simplifying signals of DDoS attacks. Main components for a BloSS are Smart Contracts that describe how information has to be transferred between Autonomous Systems (AS) and decentralized applications that include parameters defining the interaction of AS. Additionally, a consortium based blockchain, differentiating from the public and private blockchains, serves as an intermediary level of confidence. An Autonomous System (AS) thereby creates a wallet and notifies a Smart Contract that stores some information. The Smart Contract then implements a method to reclaim addresses published by other systems by querying a central Smart Contract. This central SC is used to configure all involved Smart Contracts with updated information on their managed IP networks, as the addresses of the involved wallets are immutable. In order to prevent free-riding peers (parties that only consume without any contribution), an incentive mechanism need to be set by defining tokens.  % TODO what do they do?
+%  TODO more about Architecture and Hardware?
