@@ -16,7 +16,7 @@ A DDoS (Distributed Denial of Service) attack has become a popular way to crippl
 Since the number of connected devices has increased due to IoT devices such as connected cameras, or smart fridges, attackers have a growing capacity to take control of unsecured devices \cite{Rodrigues2017a}.
 
 % Explaining DDoS
-By deploying multiple attacking entities, attackers using DDoS try to overflood a service provisioning or other published web applications and prevent rightful users from accessing the application. More precisely, attackers send a stream of packets to the victims, which consume all capacity of hardware resources and therefore make it unavailable for legitimate clients to access the service provider. Another popular way for an attacker is to send malformed packets to shut down the availability of the application service. Those packets confuse the web application or some protocols on the victims' hardware and force the server to reboot. There are probably some additional possibilities to shut down services on the internet. Such attack possibilities will be discovered first when they have been exploited in a significant attack and servers have been down for a particular time \cite{Mirkovic2004}.
+By operating multiple attacking entities so-called computer bots (clients that have been taken over by malware) remotely, attackers try to overflood a website, a network or a server and prevent rightful users from accessing the application. The service is either responding slowly or shut down. More precisely, attackers send a stream of packets to the victims, which consume all capacity of hardware resources and therefore make it unavailable for legitimate clients to access the service provider. Another popular way for an attacker is to send malformed packets to shut down the availability of the application service. Those packets confuse the web application or some protocols on the victims' hardware and force the server to reboot. There are probably some additional possibilities to shut down services on the internet. Such attack possibilities will be discovered first when they have been exploited in a significant attack and servers have been down for a particular time \cite{Mirkovic2004}.
 
 % DDoS procedure
 The procedure of a DDoS attack is split into the following phases: An attacker recruits multiple agents (clients) into which the attacker injects malicious code. Attackers often hide the identity of infected clients by using IP Spoofing mechanisms \cite{Mirkovic2004}.
@@ -26,8 +26,7 @@ The procedure of a DDoS attack is split into the following phases: An attacker r
 % TODO Motivation behind DDoS
 Multiple incentives exist to attack clients using DDoS attacks. Unfortunately, the primary goal of such an attack is to damage the selected victim. The motives may be found in prestige (gaining respect within the hacker community when attacking popular websites or services), personal hatreds, material gain (damaging competitors by attacking them), any political reasons or merely blackmailing others \cite{Mansfield-Devine2015, Mirkovic2004}.
 
-% TODO generalize possibilities of mitigation strategies
-
+%  Generalize possibilities of current mitigation strategies
 Various companies (known from other services) currently offer DDoS protection services, such as Cloudflare or Akami, and its number is increasing \cite{Pras2016}. For all solutions, a third party DDoS Protection Service (DPS) provider is required, resulting in extra costs, as the analysis performs in the cloud \cite{Rodrigues2017}. By utilizing resources from other companies, any difficulty of mitigating DDoS attacks can be shared \cite{Rodrigues2017}.
 
 % TODO More about DOTS (DDoS Open Threat Signaling) an IETF proposal
@@ -58,14 +57,16 @@ To summarize, this approach uses an already existing and publicly available dist
 
 \subsubsection{Mitigation-as-a-service in cooperative network defenses}
 % \cite{Mannhart2018}
-% Short introduction
-With cooperation between multiple domains, various collaborating Autonomous Systems (AS) can alleviate DDoS attacks by redirecting excessive traffic to other domains for filtering the traffic.
 
-As soon as a target AS detects an attack, the target sends a request to all participating AS's to mitigate the current attack. Subsequent, a mitigator AS, which is responsible for the range being attacked then either accepts or declines the mitigation request. By using a proof-of-mitigation, the completion of the mitigation has to be confirmed, and the target can pay the mitigator. As this proof-of-mitigation has to satisfy constraints of time, tamper-evidence, and reproducibility this proof has to be executed automatically during the current time window. Additionally, any user interaction has to be excluded to ensure efficiency \cite{Mannhart2018}. Various approaches creating such proof will be described and discussed in this section. It will be shown that no individual approach could be used to address a trade-off between practicability and security.
+% Short introduction
+With cooperation between multiple domains, various collaborating autonomous systems (AS) can alleviate DDoS attacks by redirecting excessive traffic to other domains for filtering the traffic. Incentives ensure the use of a mitigation-as-a-service for cooperative network defenses. By paying fees enterprises or individuals can subscribe to such a cooperative defense network and protect themselves from future attacks.
+
+As soon as a target detects an attack, it sends a request to all participating autonomous systems to mitigate the current attack. Subsequent, a mitigator, which is responsible for the range being attacked, then either accepts or declines the mitigation request. By using a \textbf{proof-of-mitigation}, the completion of the mitigation has to be confirmed, and the target can pay the mitigator. As this proof-of-mitigation has to satisfy time constraints, tamper-evidence, and reproducibility this proof has to be executed automatically during the current time window. Additionally, any user interaction has to be excluded to ensure efficiency \cite{Mannhart2018}.
+
+Various approaches creating such proof will be described and discussed in this section and have been tested on different metrics related to security and practicability.
 
 \paragraph{Marketplace of Mitigation VNFs}
-Virtualized  Network Functions (VNF) can be deployed on any hardware. The concept of Network Function Virtualization (NFV) can, therefore, provide an efficient solution for deploying these VNFs by virtualizing a single function in the network. All ASes involved in the cooperative network could load the VNF image directly from the marketplace, which then provides the mitigation service. By comparing the hashed checksum of the VNF image to a known value from the marketplace, the integrity of the VNF image will be checked. Local caching of all VNFs avoids large load on the marketplace. A big advantage of this approach is the high degree of isolation, as the VNFs consists of the minimal code which is necessary to handle the mitigation. Additionally, the VNFs can be set up on any hardware without any additional configurations. Unfortunately, the target still needs to trust that the mitigator only runs untampered VNFs directly from the marketplace \cite{Mannhart2018}.
-% TODO overwork
+Virtualized  Network Functions (VNF) can be deployed on any hardware without any additional configurations. The concept of Network Function Virtualization (NFV) can, therefore, provide an efficient solution by virtualizing a single function in the network as seen in \ref{ddos_marketplace_vnf}. All autonomous systems involved in the cooperative network could load the VNF image directly from the marketplace, which then provides the mitigation service hosted on virtual devices. By comparing the hashed checksum of the VNF image to a known value from the marketplace, the integrity of the VNF image will be checked. Additionally, local caching of all VNFs avoids large load on the marketplace. A big advantage of this approach is the high degree of isolation, as the VNFs consists of the minimal code which is necessary to handle the mitigation. Unfortunately, the target still needs to trust that the mitigator only runs untampered VNFs directly from the marketplace \cite{Mannhart2018}.
 \begin{figure}[ht]
   \begin{center}
   \includegraphics[scale=0.5]{Talk7/img/ddos/cooperative_network_marketplace_vnfs}
@@ -75,17 +76,10 @@ Virtualized  Network Functions (VNF) can be deployed on any hardware. The concep
 \end{figure}
 
 \paragraph{Trusted Computing}
-So-called Trusted Platform Modules (TPM) allow secure storage of hashes that verify in the on-chip Platform Configuration Registers (PCR) that attest secure boot chain from BIOS over Bootloader. By using this approach, only the code that is approved by the cooperative defense will be run on the system. VNFs create a defense network where trusted and known VNFs always handle requests for mitigation without trusting the responsible operator that provides the mitigation service to the AS.  A big disadvantage of trusted computing is the strict hardware requirement, as the TPM is only available as a standalone chip or integrated into the motherboard.
-\begin{figure}[ht]
-  \begin{center}
-  \includegraphics[scale=0.5]{Talk7/img/ddos/cooperative_network_trusted_computing}
-  \end{center}
-  \caption{Trusted computing}
-  \label{ddos_trusted_computing}
-\end{figure}
+In contrast to the previous approach, illustrated in \ref{ddos_marketplace_vnf}, the mitigator directly initiates the mitigation. So-called Trusted Platform Modules (TPM) allow secure storage of hashes. This allows that only the code that is approved by the cooperative defense will be run on the system. VNFs create a defense network where trusted and known VNFs always handle requests for mitigation without trusting the responsible operator that provides the mitigation service to the autonomous system.  A big disadvantage of trusted computing is the strict hardware requirement, as the TPM is only available as a standalone chip or integrated into the motherboard.
 
 \paragraph{Secure logging}
-As the mitigators can use full network infrastructure, they are allowed to create a proof of mitigation using the available traffic data. By having a detailed log of network activities, they could prove the successful mitigation by identifying a reduction in the traffic from the attack source to the DDoS target. A mitigation-proof based on the log files decreases the complexity of the proof. The aforementioned log file has been created on an isolated system and therefore has to be checked about its integrity by a third party. A disadvantage comes with high-volume attacks which create large log files. These large files introduce additional delays as the log files have to be transferred for remote auditing.
+As mitigators can use full network infrastructure, they are allowed to proof the mitigation using the available traffic data. By having a detailed log of network activities, they could prove the successful mitigation by identifying a reduction in the traffic from the attack source to the DDoS target. A mitigation-proof based on the log files decreases the complexity of the proof. The aforementioned log file has been created on an isolated system (which requires no additional trust) and therefore has to be checked about its integrity by a third party. A disadvantage comes with high-volume attacks which create large log files. These large files introduce additional delays as the log files have to be transferred for remote auditing.
 \begin{figure}[ht]
   \begin{center}
   \includegraphics[scale=0.5]{Talk7/img/ddos/cooperative_network_secure_logging}
@@ -93,10 +87,9 @@ As the mitigators can use full network infrastructure, they are allowed to creat
   \caption{Secure logging}
   \label{ddos_secure_logging}
 \end{figure}
-% TODO
 
 \paragraph{Network Slicing}
-Since network virtualization technologies and Software-Defined Networks (SDN) have advanced in recent times, they both serve as a basis for network slicing as a service. When the attack target AS requests mitigation services, it gains access to the virtualized network slice of the mitigator AS. The slice is then configured to provide access for all attacking IP addresses that have been requested within the mitigation request.
+Since network virtualization technologies and Software-Defined Networks (SDN) have advanced in recent times, they both serve as a basis for network slicing as a service. When the attack target requests mitigation services, it gains access to the virtualized network slice of the mitigators autonomous system. The slice is then configured to provide access for all attacking IP addresses that have been requested within the mitigation request.
 \begin{figure}[ht]
   \begin{center}
   \includegraphics[scale=0.5]{Talk7/img/ddos/cooperative_network_network_slicing}
@@ -105,7 +98,8 @@ Since network virtualization technologies and Software-Defined Networks (SDN) ha
   \label{ddos_network_slicing}
 \end{figure}
 
-% Final considerations of this paper?
+% Final considerations of this paper
+To conclude the work of this paper, the authors registered that none of the following oneself could be used to address a trade-off between practicability and security when qualitatively comparing all four approaches. Combining some of these methods could lead to a practical, as well a secure solution.
 
 \subsubsection{Multi domain DDoS Mitigation based on blockchains}
 % \cite{Rodrigues2017a}
