@@ -30,15 +30,18 @@ Various companies (known from other services) currently offer DDoS protection se
 
 % TODO More about DOTS (DDoS Open Threat Signaling) an IETF proposal
 % TODO probably explain Gladius?
-The Internet Engineering Task Force (IETF) additionally is proposing a protocol called DOTS (DDos Open Threat Signaling) that requires both client and server. A new protocol is required which has to be maintained.  \cite{Rodrigues2017a}. In the following sections, various approaches to mitigating DDoS attacks are illustrated as seen in popular papers without the need to deploy a new protocol.
+The Internet Engineering Task Force (IETF) additionally is proposing a protocol called DOTS (DDos Open Threat Signaling) that requires both client and server. A new protocol is required which has to be maintained. DOTS clients have to register to a DOTS server and use this protocol among the agents to organize the DDoS protection \cite{Rodrigues2017a}. In the following sections, various approaches to mitigating DDoS attacks are illustrated as seen in popular papers without the need to deploy a new protocol.
 
 \subsubsection{DDos Mitigation with Smart Contracts}
+% \cite{Rodrigues2017}
 This concept investigates a possibility to mitigate a DDoS attack in a fully decentralized manner using smart contracts and their underlying technology Blockchain. Those technologies allow sharing information (detection and mitigation mechanisms as well as IP addresses) about attacks in an automated and decentralized system \cite{Rodrigues2017}.
 
-As described in \ref{subsec:02_smart_contracts} a smart contract is a software that is made to help contracts being able to execute and verify on its own. To do so, there has to be an infrastructure that implements, verifies and enforces the negotiation of those smart contracts by using particular computer protocols and that runs fully decentralized. As known from \ref{subsec:02_blockchain}, a blockchain ensures permanent storage and provides obstacles to manipulate content and is thus an ideal infrastructure for smart contracts. Nodes participating in the blockchain run a smart contract by executing and validating a script and thereafter storing the contract and the results in a new block.
+As described in \ref{subsec:02_smart_contracts} a smart contract is a software that is made to help contracts being able to execute and verify on its own. To do so, there has to be an infrastructure that implements, verifies and enforces the negotiation of those smart contracts by using particular computer protocols and that runs fully decentralized. As known from \ref{subsec:02_blockchain}, a blockchain ensures permanent storage and provides obstacles to manipulate content and is thus an ideal infrastructure for smart contracts. Nodes participating in the blockchain run a smart contract by executing and validating a script and thereafter storing the contract and the results in a new block \cite{Rodrigues2017}.
 
 % Proposed System Architecture
- % TODO describing the architecture
+As presented in \ref{system_architecture} the architecture is composed of three components. The customers report IP addresses to the blockchain via smart contracts. The autonomous systems (AS) retrieve lists containing these addresses and implement DDoS mitigation techniques. All participants interact with the underlying technology of blockchain \cite{Rodrigues2017}.
+
+The web server of one autonomous system (AS) is a victim of a DDoS attack. Participants, that have proven ownership of their IP,  then create a smart contract that stores all IP addresses of attackers. Subscribed systems receive updated lists of IP addresses every 14 seconds, as this approaches underlying blockchain technology, Ethereum, creates new blocks within that timeframe. As soon as all other autonomous systems receive the attackers' list, various mitigation strategies may be triggered individualized to the specific domain \cite{Rodrigues2017}.
 \begin{figure}[ht]
   \begin{center}
   \includegraphics[scale=0.6]{Talk7/img/ddos/collaborative_ddos_mitigation_system_architecture}
@@ -47,16 +50,16 @@ As described in \ref{subsec:02_smart_contracts} a smart contract is a software t
   \label{system_architecture}
 \end{figure}
 
-% TODO description of this architecture
-
 % Conclusion
-To summarize, this approach uses an already existing and publicly available distributed infrastructure to adumbrate IP addresses that are either white- or blacklisted. This approach serves well as an additional security mechanism to existing DDoS defense systems across multiple domains.
-% TODO what blockchain does it use?
+To summarize, this approach uses an already existing and publicly available distributed infrastructure to adumbrate IP addresses that are either white- or blacklisted. This approach serves well as an additional security mechanism to existing DDoS defense systems across multiple domains by using an Ethereum blockchain without transferring the control of their internal network to a third party. For large-scale attacks, this approach currently is not supported well, but this issue will be addressed in the future work of this approach \cite{Rodrigues2017}.
+
 
 \subsubsection{Mitigation-as-a-service in cooperative network defenses}
 % \cite{Mannhart2018}
-% TODO introduction about cooperative network defneses?
-When collaboratively countering DDoS attacks various Autonomous Systems (AS) are involved. As soon as a target AS detects an attack, the target sends a request to all participating AS's to mitigate the current attack. Subsequent, a mitigator AS, which is responsible for the range being attacked then either accepts or declines the mitigation request. By using a proof-of-mitigation, the completion of the mitigation has to be confirmed, and the target can pay the mitigator. As this proof-of-mitigation has to satisfy aspects of timeliness, tamper-evidence, and reproducibility this proof has to be executed automatically during the current time window. Additionally, any user interaction has to be excluded to ensure efficiency \cite{Mannhart2018}. Various approaches creating such proof will be described and discussed in this section. It will be shown that no individual approach could be used to address a trade-off between practicability and security.
+% Short introduction
+With cooperation between multiple domains, various collaborating Autonomous Systems (AS) can alleviate DDoS attacks by redirecting excessive traffic to other domains for filtering the traffic.
+
+As soon as a target AS detects an attack, the target sends a request to all participating AS's to mitigate the current attack. Subsequent, a mitigator AS, which is responsible for the range being attacked then either accepts or declines the mitigation request. By using a proof-of-mitigation, the completion of the mitigation has to be confirmed, and the target can pay the mitigator. As this proof-of-mitigation has to satisfy constraints of time, tamper-evidence, and reproducibility this proof has to be executed automatically during the current time window. Additionally, any user interaction has to be excluded to ensure efficiency \cite{Mannhart2018}. Various approaches creating such proof will be described and discussed in this section. It will be shown that no individual approach could be used to address a trade-off between practicability and security.
 
 \paragraph{Marketplace of Mitigation VNFs}
 Virtualized  Network Functions (VNF) can be deployed on any hardware. The concept of Network Function Virtualization (NFV) can, therefore, provide an efficient solution for deploying these VNFs by virtualizing a single function in the network. All ASes involved in the cooperative network could load the VNF image directly from the marketplace, which then provides the mitigation service. By comparing the hashed checksum of the VNF image to a known value from the marketplace, the integrity of the VNF image will be checked. Local caching of all VNFs avoids large load on the marketplace. A big advantage of this approach is the high degree of isolation, as the VNFs consists of the minimal code which is necessary to handle the mitigation. Additionally, the VNFs can be set up on any hardware without any additional configurations. Unfortunately, the target still needs to trust that the mitigator only runs untampered VNFs directly from the marketplace \cite{Mannhart2018}.
