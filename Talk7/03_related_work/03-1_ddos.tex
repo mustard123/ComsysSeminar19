@@ -23,11 +23,11 @@ The procedure of a DDoS attack is split into the following phases: An attacker r
 
 % TODO Difference DoS and DDoS?
 
-% TODO Motivation behind DDoS
+% Motivation behind DDoS
 Multiple incentives exist to attack clients using DDoS attacks. Unfortunately, the primary goal of such an attack is to damage the selected victim. The motives may be found in prestige (gaining respect within the hacker community when attacking popular websites or services), personal hatreds, material gain (damaging competitors by attacking them), any political reasons or merely blackmailing others \cite{Mansfield-Devine2015, Mirkovic2004}.
 
 %  Generalize possibilities of current mitigation strategies
-Various companies (known from other services) currently offer DDoS protection services, such as Cloudflare or Akami, and its number is increasing \cite{Pras2016}. For all solutions, a third party DDoS Protection Service (DPS) provider is required, resulting in extra costs, as the analysis performs in the cloud \cite{Rodrigues2017}. By utilizing resources from other companies, any difficulty of mitigating DDoS attacks can be shared \cite{Rodrigues2017}.
+Various companies (known from other services) currently offer DDoS protection services, such as Cloudflare or Akami, and its number is increasing \cite{Pras2016}. Those solutions serve as a proxy and manage routing, load balance and drop traffic when a DDoS attack occurs. For all solutions, a third party DDoS Protection Service (DPS) provider is required, resulting in extra costs, as the analysis performs in the cloud \cite{Rodrigues2017}. Those cloud-based defense services could become a communication bottleneck because the traffic (download and processing) is dependent on a single location. By utilizing resources from other companies, any difficulty of mitigating DDoS attacks can be shared \cite{Rodrigues2017}.
 
 % TODO More about DOTS (DDoS Open Threat Signaling) an IETF proposal
 % TODO probably explain Gladius?
@@ -101,9 +101,10 @@ Since network virtualization technologies and Software-Defined Networks (SDN) ha
 % Final considerations of this paper
 To conclude the work of this paper, the authors registered that none of the following oneself could be used to address a trade-off between practicability and security when qualitatively comparing all four approaches. Combining some of these methods could lead to a practical, as well a secure solution.
 
+
 \subsubsection{Multi domain DDoS Mitigation based on blockchains}
 % \cite{Rodrigues2017a}
-Another approach again uses smart contracts and therefore blockchain as a mean to advertise information across multiple domains. The architecture as seen in figure \ref{ddos_multi_domain_architecture} involves the following entities: \textbf{Software-Defined Networks (SDN)} enable the development of customizable security management. A \textbf{Network Function Virtualization (NFV)} enforces the security policies through virtualized functions. An Ethereum-based \textbf{blockchain} is a base for all participants of the cooperative network to advertise DDoS attacks within a timeframe of 14s, as a new block is mined within that time. At last a \textbf{smart Contracts} which is storing black or whitelisted IP addresses of customers.
+Another approach repeatedly uses smart contracts and therefore blockchain as a mean to advertise information across multiple domains. The architecture as seen in figure \ref{ddos_multi_domain_architecture} involves the following entities: \textbf{Software-Defined Networks (SDN)} facilitate the development of customizable security management. \textbf{Network Function Virtualization (NFV)}, that are provisioned in generic hardware, strengthen security policies through virtualized functions. An Ethereum-based \textbf{blockchain} is a base for all participants of the cooperative network to advertise DDoS attacks within a timeframe of 14s, in which a new block is mined. At last a \textbf{smart Contracts} which is storing black or whitelisted IP addresses of customers \cite{Rodrigues2017a}.
 
 \begin{figure}[ht]
   \begin{center}
@@ -113,7 +114,8 @@ Another approach again uses smart contracts and therefore blockchain as a mean t
   \label{ddos_multi_domain_architecture}
 \end{figure}
 
-% TODO conclusion of paper?
+%  conclusion of paper
+This architecture is based on key technologies such as software-defined networks (SDN) and network function virtualization (NFV). Blockchain and smart contracts advertise DDoS attacks information to broadcast white or blacklisted addresses without building any distribution mechanisms or protocols \cite{Rodrigues2017a}.
 
 \subsubsection{Blockchain Signaling System (BloSS)}
 % https://github.com/blockchain-signaling-system/bloss-core
