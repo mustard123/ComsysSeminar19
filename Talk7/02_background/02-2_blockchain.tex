@@ -3,22 +3,25 @@
 
 Connected to the growing popularity of the Bitcoin Crpytocurrency that conquered the markets of the world, the interest for its underlying technology - the Blockchain - grew in a similar manner. The idea of having a fully decentralized, tamperproofed distributed online ledger was starting to not only conquer the digital business world but also other fields like property management and personal data management. And while Bitcoin itself gained a lot of bad reputation due to its fluctuation \cite{Shackelford2016}, the Blockchain on the contrary continued its triumphal procession until to day and up to a point where one might ask himself: Is the Blockchain a solution for existing problems or is the Blockchain the problem itself? \cite{Stinchcombe2017} \cite{Nielsen2018}
 
-
 In the following subsection the Blockchain technology itself, its advantages and disadvantages, the reason for its popularity as well as its usage are going to be explained in detail. Nevertheless it is not the goal of this section to give full technical insights into the various mechanisms of the blockchain nor its mathematical background, but to provide a good base of knowledge for the chapters to come.
 
 \subsubsection{The Blockchain in Detail}
 The Blockchain is a shared, trusted, publicly available and inspectable online ledger containing a chain of interlinked blocks holding information. Important hereby is the fact that no single user controls, updates or maintains the blockchain. Instead every action performed on the blockchain is following strict rules and a consensus amongst all users that access it \cite{Shackelford2016}. Because of the way its blocks are interlinked by a cryptographic hash, the Blockchain is tamperproof in the sense that no changes can be made in hindsight without being traceable. 
 Each of the blocks within the Blockchain is itself is a datastructure.  This datastructure allows to store transactions between peers. Transactions can refer to any kind of digital or real world transaction between two or multiple people \cite{Wust2017}.
 
-And herein lies the real fascination of the Blockchain mechanism, as it represents a platform or more generally a datastructure that allows humans and computers to interact with each other, without having to rely upon trusted third parties. Instead it is the controlling power of the datastructure itself or put differently, the consensus amongst all users that assures each parties compliance with their part of a deal.
-\subsubsection{Advantages and Disadvantages}
-The Blockchain has several very good properties. A list with a short explanation will compile the most important advantages \cite{Wust2017}:
+And herein lies the real fascination of the Blockchain mechanism, as it represents a platform or more generally a datastructure that allows humans and computers to interact with each other, without having to rely upon trusted third parties. Instead it is the controlling power of the datastructure itself or put differently, the consensus amongst all users, that assures each parties compliance with their part of a deal. As a results, it allows "people who have no particular confidence in each other [to] collaborate without having to go through a neutral central authority" and becomes "a machine that creates trust" (\cite{Economist2015} as cited in \cite{Shackelford2016}).
+\subsubsection{Properties of the Blockchain}
+The Blockchain has the major advantage that multiple desired properties of a datastructure lie within its very nature itself, that with traditional structures can only be achieved through additional mechanisms. A list with a short explanation will compile the most important of them \cite{Wust2017}:
 \begin{itemize}
-	\item Public Verifiability: Every observer can verify if the the Blockchain is in a valid state and that all the changes made to the Blockchains are according to the protocoll.
-	\item Transparency & Privacy: The Blockchain and its transactions can be viewed by everyone with access to it. But the more transparent data is, the less private it becomes. Therefore an area of conflict exists between these two properties. For each individual use case it has to be decided where in between the extreme cases of a fully transparent and a fully private Blockchain it lies.
-	\item Integrity: 
+	\item \textbf{Public verifiability}: The public verifiablity refers to the process of controlling the data in order to assure that the data has not been corrupted. The Blockchain has the major advantage over other datastructures, that every observer can at all times verify that the it is in a valid state and that all the changes made to its blocks are according to the protocoll. This can not be achieved by traditional centralized systems without additional complex control mechanisms.
+	  As a result of that, a higher integrity of the data itself can be guaranteed because more peers are able control the validity of the contained data.
+	\item \textbf{Transparency \& Privacy}: The Blockchain and its transactions can be viewed by everyone with access to it. But the more transparent data is, the less private it becomes. Therefore an area of conflict exists between these two properties. For each individual use case it has to be decided where in between the extreme cases of a fully transparent and a fully private Blockchain it lies.
+	
+	\item \textbf{Redundancy}: The Blockchain reduces the chances of loosing data by its distributed nature itself. Each peer containes parts of the whole Blockchain locally. The chance that data gets lost is therefore extremely small. To achieve this in centralized systems, multiple copies of the data have to be stored in different places (e.g. in different physical locations).
 \end{itemize}
+Depending on the use case e.g. whether privacy is desired or not, a Blockchain can be the right or the wrong choice. Nevertheless it provides a handful of advantages over traditional datastructures by beeing decentralized and public. The farther away from those properties one tries to push the design of a Blockchain, the more one has to ask, whether a Blockchain is the best idea for a specific application.
 \subsubsection{Reason for popularity}
+
 \subsubsection{Common scenarios for usage}
 \subsubsection{The Blockchain and Cybersecurity}
 
