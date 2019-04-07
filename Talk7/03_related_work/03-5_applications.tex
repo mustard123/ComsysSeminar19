@@ -64,8 +64,27 @@ If the government is trusted not at all, there exists no solution that overcomes
 The Blockchain can therefore be a solution if the question of authentification can be answered satisfactorily. Otherwise a traditional paper based voting system is as good as voting system including Blockchain based systems or systems that base on a trusted third party.
 
 \subsubsection{Autonomous Vehicles}
+Smart vehicles are increasingly connected to infrastructure such as traffic management systems, other vehicles and also more generally the Internet, thus making the vehicles part of the Internet of Things (IoT). This developement brings obvious advantages, but also many challenges, especially in the area of cybersecurity. Malicious attacks on a vehicle endanger not only the vehicles data and the passengers of the vehicle itself, but also other road users. And while many conventional security and privacy methods exist to reduce the risk of an attack they tend to be ineffective due to centralization, unscalability and unsecure communication architectures \cite{DorriSteger2017}.
+Meanwhile the challenges on a secure and yet scalable system for connecting self-driving vehicles with not only each other, but also with other participating entities such as power stations and traffic management systems are many: They need to be scalable, secure and tamper-proof, private but at the same time accessible to specific other entities
+
+The Blockchain offers solutions by design to before mentioned problems: It works decentralized and is tamperproof at all times. The idea of connecting autonomous vehicles to a system based on the Blockchain technology immediately comes to mind.
+At the same time its design does not include the aspect of privacy per se. The mentioned challenges are tackled in various approaches. Therefore various approaches exist to connect self-driving vehicles with a blockchain-based architecture.
+
+Idea of \citeauthor{DorriSteger2017}: A decentralized privacy-preserving and secure blockchain-based architecture for the smart vehicle ecosystem. It bases on its own Blockchain called Lightweight Scalable Blockchain (LSB) that minimizes the overhead and increases scalablility as well as the throughput.
+It consists of clusters of nodes which are connected to the system via their Cluster Heads (CHs) also called Overlay Block Managers (OBMs).  All Transactions are broadcast to and verified by the OBMs. 
+To ensure the users privacy, each vehicle is equipped with an internal vehicle storage to store sensitive data. It is the vehicle owner himself, who defines which data is provided to third parties and which data is not.
+The complete system looks the following way: Each vehicle is part of the Internet of Things and hence connected to the Internet. Through this link the vehicle is connected to an overlay consisting of various OBMs that form the nodes of the Blockchain based system.
+The vehicle generates single signature transactions in pre-defined time intervalls containing the signed hash of the data stored in the in-vehicle storage. This transaction is sent to and validated by the closest OBM, which finally stores it in the Blockchain That way at all times, the users datas integriy can be validated.
+To make certain Public Keys identifiable in the real world a trusted third party is involved and the mechanism is centralized. This is needed in the case of service centers and software providers.
+Through this ecosystem various standard applications can be leveraged, such as remote software updates, vehicle insurance, Smart Charging and Vehicle Sharing Devices.
+
+Idea of \citeauthor{Rowan2017}: Their paper focusses on the communication between two vehicles and vehicles and infrastructures through side-channels such as visible light and acoustic signals. To solve the problem of the limited data throughput while trying to securely validate the other communication partner, centralized approaches were discarded due to the high number of manufacturers and standards. Instead \citeauthor{Rowan2017} propose a blockchain based domain name system an dpublic key infrastructure, as they do not require centralisation in order to push data into the distributed database. 
+The blockchain based approach was chosen as most promising way of storing public keys due to the following reasons:
+
 \begin{itemize}
-	\item \cite{Dorri2017}
+
+	\item \cite{Dorri2017} 
+	
 	\item  \cite{Rowan2017}
 	\item \cite{Sharma2017}
 \end{itemize}
