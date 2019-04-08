@@ -124,7 +124,7 @@ Again though, even though the Blockchain is presented as central agent o this sy
 
 The idea to run an smart city IoT network on the blockchain is an obvious one. But by looking at the things the blockchain actually solves, we see that it does not solve any problems that wouldnt be there with a traditional client-server architecture. The presented architecture does not need the Blockchain. The only advantage the blockchain offers is its tamperproofness, its transparency and distributional powers. But none of that is a necessary component of such an IoT network. And in the end we end up with a private permissioned blockchain that is striped off its real blockchain-powers in order to be controllable and easy to use. Therefore it is nothing else than another form of database, that could be replaced with any other database architecture.
 
-\subsubsection{Personal Data Protection and Data Sharing}
+\subsubsection{Personal Data Protection and Sharing in the medical sector}
 No specific field is that much torn between data sharing and data protection like the medical sector. One one hand, sharing private data is necessary so ensure safe medication and even save lifes, on the other hand the data is extremely sensitive and can inflict big problems on individuals if made public. 
 On the problematic of sharing and protecting electroninc healthcare records we are going to elaborate the quality the blockchain offers and discuss whether its use is really necessary or not.
 
@@ -140,16 +140,58 @@ Meanwhile in the health-care sector three traditional models exist to deal with 
 	\item Push model: Medical information is sent from one provider to another
 	\item Pull model: A provider asks another provider for information
 	\item View model: A provider looks at another providers record.
-\end{enumerate}
+\end{itemize}
 A major drawback to all of these models is that the data is not audited or tracked in a standardized way. For example, if a patient is transferred to a different hospital, the new hospital may not be able to access data that was not "pushed". This lack of audit trail means that there is no guarantee of data integrity from the point where data is generated to the point where it is used. 
 It is argued by \cite{Kshetri2017} that the blockchain offers a fourth model, which makes it possible to share medical records securely accross providers during the lifetime of a patient without having the need to include a trusted third party into the process.
 This approach allow intelligent record access by the owner of the data himself and to create an audit trail at the same time.
 
 Especially powerful is the combination of IoT and the Blockchain in the healthcare sector. For instance can smart IoT devices carry out autonomous transactions through smart contracts on the Blockchain, which guarantees access control and tamperproofness at the same time. \citeauthor{Kshetri2017 -- > Quelle} even claim that through Blockchain military-grade security can be reached by e.g. storing cryptographic hashes of individual data and device firmware in a private Blockchain. Such a system can create permanent record of device content and state, that can be used to verify the datas integrity as well as the devices full functionality and whether the software has been altered.
 
-BAsed on these thoughts various products and concepts have been created to make use of these properties of the Blockchain to control access to personal data, while at the same time make it accessible at all times through third parties if needed. 
+Based on these thoughts various products and concepts have been created to make use of these properties of the Blockchain to control access to personal data, while at the same time make it accessible at all times through third parties if needed. 
 
+MedRec by \citeauthor{Azaria2016}:
+The MedRec system is a sophisticated network to share and protect clinical data using the blockchain and smart contracts. Via smart contracts on an Ethereum blockchain they log patient-provider relationships that associate a medical record with viewing permissions and data retrieval instructions of execution on external databases.
+Providers can add new records associated with a particular patient and patients can atuhorize sharing of records between providers. The involved parties are notified by automated notifications when changes occur or new data is added.
+By carrying out different kinds of policies, designed to implement any kind of rules, are carried out by the particular smart contracts to enforce data alteration only by legitimate transactions.
+To make the potentially large amount of record representations possible the system provides three different types of smart contracts: 
+\begin{itemize}
+	\item Registrar Contracts, that map participant identification strings to their Ethereum address identiy, such that the registration of new identities can be restricted to certified institutions.
+	\item Patient-PRovider Relationship Contracts: Issued when one node stores and manages medical records of the other.
+	\item Summary Contracts, that function as bread crumb trail for participants in the system to locate their medical record history
+\end{itemize}
 
+The system consists on system nodes that are run by providers, that require a full server and database infrastructure, and patient nodes that can be run on any mobile device or via a web-interface, using only a local database with the patients own data.
+MedRec offers two kinds of incentives to run a system node:
+The first one is based on Ethereums own inherent incentivizing model. Miners who managa to solve the crypto-puzzle and to incorporate a block into the chain get an amount of Ether on their account, that allows them to pay for transactions.
+The second one is targeting researchers, that get rewarded by getting access to anonymized health data.
+
+An uncovered topic in the whole medical sector that is never mentioned by any of the papers is the right to forget, as granted by e.g. the GDPR. This fundamental right of a person/patient to make records disappear is a big problem once a record is in the blockchain. Of course really letting a medical record disappear in traditional systems might be considered impossible as well, but at least from a theoretical point of view, a traditional system allows the deletion of a record. Meanwhile a blockchain based system, does per design not make it possible to delete anything at all, as it is stored within the chain, in an unmodifiable way.
+
+\citeauthor{Cao2019} propose a different model for dealing with patient data:
+Existing cloud solutions for medical records as appealing as they are, have many critical privacy and security concerns, as the records in no case should be leaked. However existing cloud service providers would not accept liability for privacy protection against adversaries and only protect the privacy as much as possible. Additionally, the real location of the records is unclear when using cloud based systems 
+\citeauthor{Cao2019} analyze multiple existing cloud-assisted eHealth systems and point out, that existing schemes cannot ensure the correctness and integrity of oursourced medical records. Especially not in the case, when a authorized doctor colludes with the cloud server to modify outsourced records which are generated by him himself.
+
+To answer these problems \citeauthor{Cao2019} propose a secure cloud-based system, that ensures the confidentiality, correctness and integriy of oursourced medical records without introducing any trusted third party. In that system records generated by one doctor during a treatment period, are integrated into a transaction of blockchain-based currencies. Meanwhile the system employs a user-friendly password-based key agreement to establish secure channels between patients and doctors.
+
+The proposed system works in the following way: Each patient makes an appointment with the hospital and obtains a treatment key for diagnosis. With the treatment key, a secure channel between patient and hospital and the doctors is established. 
+Before the treatment time, the patient generates warrants to delegate to doctors, that indicate the identities of the treating doctors for a specific treatment time and other auxiliary information.
+During the treatment time, doctors generate medical records for the patient: In the single-doctor use-case, these are generated by just one doctor, in the multi-doctor use-case, medical records are successively generated by all treating doctors based on the record by the previous doctor. In the latter case each doctor is not only responsible for his own data, but also for the records his predecessors have generated.
+The security of this system relies on the security of the Ethereum blockchain and the secure session established based on the treatment key. It mainly ensures that no malicious doctor can modify any record in an unauthorized or misusing way, due to the timeliness and tamperproofness of the Blockchain.
+
+The system is claimed to be secure against:
+\begin{itemize}
+	\item medical record modification attacks
+	\item imporsonation attacks
+	\item change of timeline
+\end{itemize}
+All mechanisms that ensure the systems security are based on the blockchain. The system therefore is very much dependent on the blockchains mechanisms.
+
+Even though this approach is far less extensive than the MedRec approach it does ensure the secure dealing of medical records through patients and doctors and provides to mechanisms to prevent any forging or tampering with the data through authenticated or unauthenticated people.
+The only critical point, that challenges the use of the blockchain is again the question "Are all writers trusted?"\cite{Wust2017}. And again we face the problem, that it is the transitioning part of the whole process, the moment when the real world gets projected by a human being onto the digital world, that imposes the vulnerability.
+If we do not trust the doctors to create rightful medical records, why do we consult them? And if we do trust them, why do we need a mechanism that prevents the doctors from forging medical records?
+OF course one might argue, that there is always good and bad doctors, and that such a system provides a good control against elements in e.g. a chain of treating doctors. But from a theoretical point of view, the question remains. And leads to the conclusion, that in the end, we cannot outsource trust to a machine. 
+Disregarding of this general problem, the system does provide good security mechanisms against impersonation attacks and forgery that are undoubtely useful and an improvement that is produced by the nature of the blockchain itself.
+The question whether such a system must be run on the blockchain can therefore not be answered finally. The Blockchain is used to make the system more secure, Yes, but the blockchain cannot take over the responsibility for human or institutional malevolence.
 
 
 \begin{itemize}
@@ -161,7 +203,5 @@ BAsed on these thoughts various products and concepts have been created to make 
 	\item \cite{Zhang2018}
 	\item \cite{Esposito2018}
 	\item \cite{Ekblaw2016}
-	\item \cite{Cao2019}
-	\item \cite{Kshetri2017}
 \end{itemize}
 
