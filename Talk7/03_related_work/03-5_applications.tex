@@ -125,6 +125,32 @@ Again though, even though the Blockchain is presented as central agent o this sy
 The idea to run an smart city IoT network on the blockchain is an obvious one. But by looking at the things the blockchain actually solves, we see that it does not solve any problems that wouldnt be there with a traditional client-server architecture. The presented architecture does not need the Blockchain. The only advantage the blockchain offers is its tamperproofness, its transparency and distributional powers. But none of that is a necessary component of such an IoT network. And in the end we end up with a private permissioned blockchain that is striped off its real blockchain-powers in order to be controllable and easy to use. Therefore it is nothing else than another form of database, that could be replaced with any other database architecture.
 
 \subsubsection{Personal Data Protection and Data Sharing}
+No specific field is that much torn between data sharing and data protection like the medical sector. One one hand, sharing private data is necessary so ensure safe medication and even save lifes, on the other hand the data is extremely sensitive and can inflict big problems on individuals if made public. 
+On the problematic of sharing and protecting electroninc healthcare records we are going to elaborate the quality the blockchain offers and discuss whether its use is really necessary or not.
+
+\cite{Kshetri2017}: 
+To ensure the security and privacy of identity and other personal data three parties are involved in a typical identity document exchannge:
+\begin{enumerate}
+	\item subject of identity, which can be an individual or an asset
+	\item A certifier, which is often a government agency, a firm, which notarizes the documents
+	\item Inquisitor that makes an inquiry on the subject in order to investigate requirements or a similar cause 
+\end{enumerate}
+Meanwhile in the health-care sector three traditional models exist to deal with the facility of interoperability of medical data:
+\begin{itemize}
+	\item Push model: Medical information is sent from one provider to another
+	\item Pull model: A provider asks another provider for information
+	\item View model: A provider looks at another providers record.
+\end{enumerate}
+A major drawback to all of these models is that the data is not audited or tracked in a standardized way. For example, if a patient is transferred to a different hospital, the new hospital may not be able to access data that was not "pushed". This lack of audit trail means that there is no guarantee of data integrity from the point where data is generated to the point where it is used. 
+It is argued by \cite{Kshetri2017} that the blockchain offers a fourth model, which makes it possible to share medical records securely accross providers during the lifetime of a patient without having the need to include a trusted third party into the process.
+This approach allow intelligent record access by the owner of the data himself and to create an audit trail at the same time.
+
+Especially powerful is the combination of IoT and the Blockchain in the healthcare sector. For instance can smart IoT devices carry out autonomous transactions through smart contracts on the Blockchain, which guarantees access control and tamperproofness at the same time. \citeauthor{Kshetri2017 -- > Quelle} even claim that through Blockchain military-grade security can be reached by e.g. storing cryptographic hashes of individual data and device firmware in a private Blockchain. Such a system can create permanent record of device content and state, that can be used to verify the datas integrity as well as the devices full functionality and whether the software has been altered.
+
+BAsed on these thoughts various products and concepts have been created to make use of these properties of the Blockchain to control access to personal data, while at the same time make it accessible at all times through third parties if needed. 
+
+
+
 
 \begin{itemize}
 	\item \cite{Zyskind2015}
@@ -136,5 +162,6 @@ The idea to run an smart city IoT network on the blockchain is an obvious one. B
 	\item \cite{Esposito2018}
 	\item \cite{Ekblaw2016}
 	\item \cite{Cao2019}
+	\item \cite{Kshetri2017}
 \end{itemize}
 
