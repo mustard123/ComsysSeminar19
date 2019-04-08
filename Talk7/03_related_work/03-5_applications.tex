@@ -63,7 +63,7 @@ If the government is trusted not at all, there exists no solution that overcomes
 
 The Blockchain can therefore be a solution if the question of authentification can be answered satisfactorily. Otherwise a traditional paper based voting system is as good as voting system including Blockchain based systems or systems that base on a trusted third party.
 
-\subsubsection{Autonomous Vehicles}
+\subsubsection{Autonomous Vehicles, Smart Cities \& IoT}
 Smart vehicles are increasingly connected to infrastructure such as traffic management systems, other vehicles and also more generally the Internet, thus making the vehicles part of the Internet of Things (IoT). This developement brings obvious advantages, but also many challenges, especially in the area of cybersecurity. Malicious attacks on a vehicle endanger not only the vehicles data and the passengers of the vehicle itself, but also other road users. And while many conventional security and privacy methods exist to reduce the risk of an attack they tend to be ineffective due to centralization, unscalability and unsecure communication architectures \cite{DorriSteger2017}.
 Meanwhile the challenges on a secure and yet scalable system for connecting self-driving vehicles with not only each other, but also with other participating entities such as power stations and traffic management systems are many: They need to be scalable, secure and tamper-proof, private but at the same time accessible to specific other entities
 
@@ -99,14 +99,33 @@ To use the Blockchain to create a decentralized name service is a good and usefu
 
 Did i understand it right???
 
-\citeauthor{Sharma2017} identifies several challenges when creating a network for autonomous vehicles.
 
+\citeauthor{Sharma2017} identifies several challenges when creating a network for autonomous vehicles. First, versatility of the host and the heterogeneity need to be considered for creating a robust network suited for inter-vehicular communication. Another main concern is are the privacy and security aspects: Setting up trust connections the vehicles is fundamental. The vehicular network is an arrangement of vehicles, which shares the capacity of registering force, Internet access and the capacity to frame ordinaly distributed computing.
 
-
+The main security difficulties of such a vehicular network are the following:
 \begin{itemize}
-	\item \cite{Sharma2017}
+	\item Verification and respectability of messages in an environment where the nodes are highly mobile
+	\item Confidentiality of messages by using cryptography
+	\item Guarantee safe area and restriction because vehicles are dependent of the area they are in
+	\item Ensuring the security of put away information on the cloud
+	\item Secure this put away information against unapproved misuses
 \end{itemize}
-\subsubsection{Personal Data Protection and Patient Monitoring}
+
+\citeauthor{Sharma2017} propose a "Block-VN-model", an architecture based on the blockchain, which allows the developement of the distributed network of large-scale vehicles in an efficient and effective way. In this model the controller nodes are connected in a distributed manner to provide the necessary services on a large scale. The vehicle nodes fall into two categories: miner nodes, that handle request/response requests and ordinary nodes, that sends a service request message to miner nodes or to the controller nodes directly.
+
+The system is set up in a hierarchical way. At the top there exist two trusted third parties that register the vehicles (e.g. Department of Motor Vehicles) and that categorize the vehicles into miner nodes and ordinary nodes (Revocation Authority). Both parties exchange information with each other and the blockchain network of the controller nodes. These nodes form the blockchain overlay at the top as they hold the information of the vehicle network and share it in a distributed manner with other controller nodes. Each communication is made public using  public private key encrpytion.
+The next layer of the blockchain overlay is made by the miner nodes. Miner nodes are chosen vehicles, that have three asset classifications: Computing, Sensors and Data Storage. The interplay between the three tasks is as follows: The data storage stores the substance of the vehicle created by applications and sensors of the vehicle itself, in addition with other data such as visual data and multimedia. The network supports the sharing of information between members of the blockchain network by accepting an external pursuit request.
+
+Various scenarios are supported by such a network. Examples are payment and the sharing of vehicles.
+
+The approach presented by \citeauthor{Sharma2017} is the only approach so far, that thinks far beyond the incorporation of the blockchain into autonomous vehicles: It presents a framework for the controlled and secured interaction between all kinds of IoT devices. Cars as a special case are just one of them. The approach is very generally described and the exact mechanisms that include the blockchain are not yet beyond an explanatory stage.
+The idea though of having multiple layers of nodes that all incorporate the blockchain, but have different rights to access it, seems very promising and suits well to the hierarchical strucuture that are necessary to organize a smart city network. In some way it can be thought of a system of checks and balances where some nodes have more rights, but their actions can always be seen from everywhere at any time.
+Again though, even though the Blockchain is presented as central agent o this system and as the solution to the future of IoT networks, it remains one amongst many other parts of the overall system. Various central authorities remain necessary if the digital has to be linked with the real world.
+
+The idea to run an smart city IoT network on the blockchain is an obvious one. But by looking at the things the blockchain actually solves, we see that it does not solve any problems that wouldnt be there with a traditional client-server architecture. The presented architecture does not need the Blockchain. The only advantage the blockchain offers is its tamperproofness, its transparency and distributional powers. But none of that is a necessary component of such an IoT network. And in the end we end up with a private permissioned blockchain that is striped off its real blockchain-powers in order to be controllable and easy to use. Therefore it is nothing else than another form of database, that could be replaced with any other database architecture.
+
+\subsubsection{Personal Data Protection and Data Sharing}
+
 \begin{itemize}
 	\item \cite{Zyskind2015}
 	\item \cite{Yue2016}
@@ -117,13 +136,5 @@ Did i understand it right???
 	\item \cite{Esposito2018}
 	\item \cite{Ekblaw2016}
 	\item \cite{Cao2019}
-\end{itemize}
-\subsubsection{Smart Cities \& IoT}
-\begin{itemize}
-	\item \cite{Biswas2016}
-	\item \cite{Mylrea2017}
-	\item \cite{Liang2018}
-	\item \cite{Dorri2017a}
-	\item \cite{Shafagh2017}
 \end{itemize}
 
