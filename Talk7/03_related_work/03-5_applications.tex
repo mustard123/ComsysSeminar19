@@ -79,13 +79,31 @@ To make certain Public Keys identifiable in the real world a trusted third party
 Through this ecosystem various standard applications can be leveraged, such as remote software updates, vehicle insurance, Smart Charging and Vehicle Sharing Devices.
 
 Idea of \citeauthor{Rowan2017}: Their paper focusses on the communication between two vehicles and vehicles and infrastructures through side-channels such as visible light and acoustic signals. To solve the problem of the limited data throughput while trying to securely validate the other communication partner, centralized approaches were discarded due to the high number of manufacturers and standards. Instead \citeauthor{Rowan2017} propose a blockchain based domain name system an dpublic key infrastructure, as they do not require centralisation in order to push data into the distributed database. 
-The blockchain based approach was chosen as most promising way of storing public keys due to the following reasons:
+The blockchain based approach was chosen as most promising way of storing public keys due to its robustness and security regarding large scale attacks. 
+In the case of \citeauthor{Rowan2017} the Blockstack (Quelle) software was used. It is an open source, per reviewed application stack implementation that provides identity, naming, storage and authentication services. It ressembles a distributed database without central management.
+To establish a session between two parties, the paper now proposes a new approach, designed to integrate the security and communications requirements in authonoumous vehicle communication: Based on the TLS 1.2 handshake it differs only in one point: To minimize the throughput requirement it uses a blockchain distributed hashtable. 
+All in all the systems advantages are huge:
+It has a very small required throughput, it is able to locate the vehicle being communicated with, the vehicle can be authenticated using a certificate, the encryption is symmetric using PKI architecture.
+
+The main use of the Blockchain in this case is therefore its use for the handshake itself. The communication in this scenario needs to be extremeley fast and include as little overhead as possible and work in the absence of any wireless or any cantralized infrastructure. To make this possible, the handshake, that authenticates the involved partners and establishes a secure session, makes use of the Blockchain in the form of a decentralized Domain Name Service.
+
+In this case the Blockchain is used as a way to replace the need for a central authority when authenticating another vehicle. By creating a decentralized Name Service that binds the licence plate value and an identity together with a certificate it is able to create a good base for a secure session between two verifiably trusted vehicles.
+
+However the paper does give little information about, where the different nodes of the blockchain lie and how they communicate. It is only assumed that the vehicles are the nodes.
+
+Autonomous vehicles communicating with each other using the Blockchain as a base for authentication seems like a good use case. The application requires to store the state of the data, there are multiple writers, that are not trusted and online access to a central authority or a trusted third party can not be assumed at all times. Applying the flow-chart by \citeauthor{Wust2017}, this use case calls for a private permissioned Blockchain. 
+According to the paper by \citeauthor{Rowan2017} this is exactly what was done. 
+Nevertheless the use of any private permissioned blockchain requires central registration through a trusted third party in the first place. And it is this very point that raises the following question: One main reason for the use of the Blockchain as a decentralized public key domain name service in favor of a central authority, was the fact, that "a centralized system would not find favour due to the multitude of manufacturers, political regions and vehicle types" \cite{Rowan2017}. Why would this be different when issueing certificates?
+In the end we still run into the problem that we need an external party that trustfully binds real goods to a public key in the digital world. 
+To use the Blockchain to create a decentralized name service is a good and useful idea as it does not rely on the Internet, but the underlying assumption that it does get rid of any central authority is flawed.
+
+Did i understand it right???
+
+\citeauthor{Sharma2017} identifies several challenges when creating a network for autonomous vehicles.
+
+
 
 \begin{itemize}
-
-	\item \cite{Dorri2017} 
-	
-	\item  \cite{Rowan2017}
 	\item \cite{Sharma2017}
 \end{itemize}
 \subsubsection{Personal Data Protection and Patient Monitoring}
