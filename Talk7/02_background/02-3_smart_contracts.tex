@@ -4,15 +4,63 @@
 \textbf{Length: around 2 pages}
 
 This section will look at the concept of smart contracts in the concept of ethereum.
-Ethereum is a blockchain ''with built in programming language'', or a ''consensus-based globally executed virtual machine''. Nodes in the ethereum network make up the EVM (Ethereum virtual machine).
+Ethereum is a blockchain ''with built in programming language'', or in other words a ''consensus-based globally executed virtual machine''. 
+The ethereum project started in 2015 and has gained popularity since then. In fact, it is second place in terms of market capitalization according to coinmarketcap.com, right after bitcoin and followed by ripple.
 
-Code written to be executed on the Ethereum network is what is called smart contracts.
-Ethereum comes with a turing complete programming language
+Nodes in the ethereum network make up the EVM (Ethereum virtual machine). Smart contracts are written in the programming language solidity. They get then compiled to bytecode that the EVM can understand.
+Once deployed on the blockchain, the code cannot be changed. Deploying smart contracts means mining them into the blockchain, thus deploying smart contract costs gas like every other transactions. Once they are there, they are part of the blockchain history.
+Every smart contract on the blockchain lives at an address where the contracts exposed functions and variables can interacted with. Solidity is an object-oriented programming language and comes with known modifiers such as ``public'' and ``private'' and more.
+It is perfectly possible to write smart contracts that do nothing sensible, or even nothing at all, e.g. smart contract with a private state variable without getters or setters.
+Such a contract would do nothing but sit on the blockchain doing nothing. Smart contracts can inherit from smart contracts and interact with other smart contracts. 
+Smart contracts can even be sent ether to. Sending ether to a smart contract that does not provide functionality to retrieve those ethers means they are lost forever in the contract.
+This is crucial especially when designing contracts that implement business logic or any contracts for that matter. Smart contracts should be reviewed and audited carefully and tested for vulnerabilities else its weaknesses can be exploited like in the infamous``DOA' attack.
 
+Every transaction on the blockchain costs gas. Gas is expressed in ether. The miner that mines a transaction collects the gas associated with it, thus gas serves as an incentive for miners to mine and contribute to the network. There is a defined set of operations with their respective gas costs in the etherum yellow paper.
+Figure \ref{fig:smart_contract_fees} shows and excerpt of those costs.
+
+\begin{figure}
+  \label{fig:smart_contract_fees}
+  \includegraphics{Talk7/img/smart_contracts/gas-fees.png}
+  \caption{Smart contract fees from ethereum yellow paper}
+  
+\end{figure}
+
+Miners will generally prioritize transactions with a higher gas fee. The total gas fee to be paid is calculated by the gas price times the amount of gas to use. If the gas price for a transaction is set high, the transaction will be mined to the blockchain faster. If on the other hand the price is set low, miners will choose to mine other transactions first
+before mining transactions with a lower price. How high the gas price is is determined by the market. During peak network traffic gas price will be high because more people want their transaction to go through driving prices up. When the network is more relaxed prices drop.
+A transaction has a gas limit that can be set. This is to indicate the maximum amount of gas a transaction can use up before it is aborted. The gas limit times the gas price is maximum amount the issuer is willing to pay for a transaction. In case of an endless loop, the execution will only last as long until the gas limit is used up.
+If the gas limit is too little, the computation will run out ouf gas before it is finished it will be reverted and the gas paid will be lost. If the gas limit is higher than the amount of gas actually used, the remaining gas will be refunded to the sender of the transaction. 
+Miners can only put so many transactions in a block that block gas limit is not exceeded. This is also not a fixed value as miners can vote with each block to increase or decrease the block gas limit by a certain amount. Block gas limit serves to keep propagation of blocks and transaction time low by essentially limiting the size of the blocks.
+
+The following list sums up the key terms mentioned above
 \begin{itemize}
-  \item Smart contracts and ethereum
-  \item gas
-  \item contract transactions
-  \item contract state
-  \item smart contracts example
+  \item {gas:}
+  \item {gas prize:}
+  \item {gas limit:}
+  \item {transaction fee:}
+  \item {block gas limit:}
+  
 \end{itemize}
+
+In fact, not all smart contract interaction costs gas. Functions that do not modify the state of a contract, and hence the blockchain, do not need to be mined by a miner.
+Calling those functions will still use gas, because every operation in the EVM uses gas, but that gas is refunded immediately as calling those functions do no not result in a transaction.
+In solidity those functions have the modifier ``pure'' or ``view''. Functions denoted with ``pure'' don't even read state variables. Both those functions can be run on a single node in the EVM and 
+nothing has to be propagated to the network thus no transaction has to be mined into the blockchain and no gas fee has to be paid.
+
+\input{Talk7/solidity-highlighting.tex}	
+
+\begin{lstlisting}[language=Solidity]
+  pragma solidity 0.4.16;
+  
+  contract TestContract {
+      
+    string private myString = "foo";
+    
+    function getString() constant returns (string) {
+        return myString;
+    }
+    
+    function setString (string _string) {
+        myString = _string;
+    }
+  }
+  \end{lstlisting}
