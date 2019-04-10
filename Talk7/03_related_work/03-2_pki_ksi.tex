@@ -1,6 +1,129 @@
 \subsection{Public Key Infrastructure (PKI)}
 \label{subsec:03_pki}
 
+Public Key Cryptography serves as one of the cornerstones of modern communication systems. Entities can secure their communication asynchronously using a pair of keys (public and private). After the distribution of its public key, an entity can be contacted by anyone via securely encrypted channels.
+
+What makes this type of cryptography so convenient is that its security does not depend on any shared hidden secret (e.g., a passphrase). An entity encrypts its message using the public key of its counterparty, after which only the supposed recipient can decrypt the message with its private key.
+
+While the public key and private key always belong to the same communication channel, it is practically not possible to infer the private key from the public key. This means that the public key can be distributed without considerations about the trustworthiness of potential recipients (e.g., publicly on online platforms).
+
+For a private exchange between two to a few counterparties, the simple approach of distributing public keys out-of-band (e.g., in person) might suffice to establish sufficient confidence and trust. As soon as communication networks on a larger scale are considered, an in-person exchange between all parties in the network would no longer be feasible. In such a case, a trusted, often centralized entity needs to serve as a directory of who can be contacted with which public key.
+
+TODO: certification
+
+Public Key Infrastructure (PKI) is the summary term for an infrastructure that enables secure communication through the creation and maintenance of such trusted entities. As described in [1], a PKI "lets participants communicate with each other securely using public key cryptography and allows them to verify each other's keys with the help of certificates and trust relations."
+
+
+\subsubsection{Existing PKI Systems (X.509)}
+
+Traditional PKI systems are most visibly used for communication over the web. Before two entities (e.g., a server and a client) can securely communicate over HTTPS/TLS, the domain name of the server must have been validated and certified by a certificate authority (CA). A CA is an entity that has the authority over issuing certificates for a given PKI namespace (e.g., domain names or a subset thereof).
+
+When establishing communication with a server over HTTPS, a client then verifies the identity of the server according to its certificate, and client and server confidentially decide on a data encryption secret by employing asymmetric encryption. All further message and data exchange can then be performed with symmetric encryption.
+
+The procedures of PKI management as employed in HTTPS/TLS, as well as many other systems and private infrastructures, are standardized by the Internet Engineering Task Force (IETF) in the X.509 standard [2].
+
+TODO: more on X.509
+TODO: PGP?
+TODO: Keybase?
+
+
+\subsubsection{Threat Model for Public Key Infrastructures}
+
+PKI systems allow for an establishment of trust and a secure exchange between parties that do not necessarily know each other. However, both participating parties need to trust the centralized CA to issue valid certificates. The most visible threat to a PKI system is, therefore, an attack on this centralized trusted party.
+
+Ans such kind of attack could, if successful, allow an intruder to generate fraudulent certificates, which could then be used to impersonate one or more of the parties and perform a proxied kind of a man-in-the-middle attack. In such a type of attack, the attacker would act as a proxy that intercepts messages between the parties, decrypts and extracts their contents, and redirects them to the original recipient, making it very difficult for the participants to figure out they are being intercepted.
+
+In the concrete example of a web certification authority, domains are most often validated by merely sending an email to either an email address on the domain to be certified (e.g., webmaster) or by looking up DNS records. This indirect verification creates a number of vulnerabilities on several levels, as emails, as well as DNS settings, are managed by other entities that could potentially be attacked (through social engineering, hacking, etc.). CAs have also been known to issue fraudulent certificates on government request, or through simple human error (CITE: certificate transparency and such).
+
+As centralization in PKI systems leads to a big attack surface with regards to the interception of communication that is directed to other entities, developing approaches that can function without the need for any such central entities (e.g., CAs) have been a topic of a number of publications in recent years. The following sections provide a more detailed overview of general decentralized PKI as well as more specific applications in the area of web certification.
+
+TODO: other attacks (e.g., on encryption itself, getting the private key, etc.)
+
+
+\subsubsection{Decentralized Public Key Infrastructures}
+
+\paragraph{Namecoin}
+
+A foundational work that introduced the idea of applying blockchain to the decentralization of naming systems was initially created to rebuild the domain name system (DNS) such that it can work without centralized DNS servers. Much like central PKI entities, DNS servers can be exploited and, if hacked, can be potentially dangerous to large parts of the internet user base.
+
+The main idea of namecoin is to store all DNS-related naming information in a blockchain ledger that enforces state updates to occur via appended transactions. All entities in the network share a copy of this ledger and can independently lookup the records associated with a name. Records are owned, and can only be modified, by a given cryptographic identity. However, ownership could also be transferred to another entity through a special transaction [4, 5].
+
+While this approach to naming provides the benefit of decentralization, it comes with challenges regarding security, performance, and scalability. As the namecoin blockchain is a fork of the bitcoin blockchain, it shares most of its technicalities and limitations but progresses a separate ledger. This means that it has a separate and much smaller set of miners, making it very vulnerable to 51\% or DDoS attacks. Even though namecoin implements merged-mining (i.e., it allows bitcoin miners to participate in namecoin mining), its mining is mainly concentrated on one big pool of miners with >50% of the computational power [4, 5].
+
+In addition to the limitations on a security level, namecoin also struggles with regards to performance (e.g., transactions per second). As the block size in bitcoin and its forks (i.e., namecoin) is relatively small, there is a limited amount of data that can be stored in transactions and processed in a block. This severely limits the throughput of transactions and can lead to issues in a DNS use case.
+
+\paragraph{Blockstack}
+
+The Blockstack system was initially based on the namecoin blockchain using its dedicated namespace. Using the initial system called Blockstack ID, users could link their username with their public key, as well as some additional data. To work around the issues of limited storage within a block, Blockstack ID would connect related key-value pairs using a linked list data structure.
+
+Due to the limitations of namecoin also applying to Blockstack ID, its maintainers have intermittently developed a new approach that replaces Namecoin with the Bitcoin blockchain. Contrary to its predecessor, Blockstack does not store its data directly in the blockchain. Instead, the blockchain only stores hashes of the data, while the data itself is stored in external systems.
+
+The Blockstack architecture introduces a novel approach that is called the virtualchain. The virtualchain is a logical structure built on top of a blockchain (not necessarily Bitcoin) that processes transactions that are relevant to the Blockstack system and implements a state-machine over these transactions. When state updates occur, new transactions are encoded and written to the underlying blockchain (subject to consensus). The virtualchain is used to compute a global state of who owns what names and what is associated with these names. These components form the control plane of the Blockstack architecture.
+
+Instead of storing the production data in blockchain productions, Blockstack only appends hashes and pointers to the real data to the blockchain. The production data is managed by a separate data plane that consists of routing as well as actual persistence capabilities. Similar to the approach taken by traditional DNS, the routing layer is based on zone files that contain all routes/records for any given name. The actual persistence layer then stores whatever data is to be associated with a record in a database or another storage system.
+
+Separating the architecture into a control and data plane allows for efficient lookups of data against the data plane, while still allowing for verification of the data stored therein using the control plane. As a hash of the zone file is stored alongside its name in the blockchain, a low-level transaction with consensus is necessary to modify the zone file that is associated with a name. Furthermore, if hashes of record contents are put inside the zone file, these contents also become immutable without consensus.
+
+The Blockstack system architecture offers possible solutions for several fundamental problems regarding the storage of associated data. The production data is stored outside of the blockchain, which works around the limited amount of storage per block. Additionally, the data that needs to be replicated across participants in the network is limited, as transactions only contain hashed and encoded information.
+
+Furthermore, the system implements Simplified Name Verification (SNV), which is thought to address the endless ledger problem. To ensure the validity of a blockchain, a node needs to be able to process the entire blockchain up to its genesis block. This means that the entire present blockchain, as well as all further additions, need to be stored and processed, which takes an increasing amount of time. SNV counters this by computing consensus hashes (which can be thought of as checkpoints) at certain points in time. Computing a consensus hash from an untrusted database and comparing it to the last one that was trusted allows for a more efficient bootstrap verification procedure.
+
+TODO: Maybe Advantages \& Disadvantages
+TODO: Blockstack Whitepaper
+
+\paragraph{Bitforest}
+
+Approaches like Blockstack (TODO: add other citations) are possible solutions for the deployment of a fully decentralized PKI system that cannot be controlled or censored by any one entity. However, while this might be advantageous for some cases, organizations that deploy a PKI, even if it is decentralized, more often want to keep some control over their namespace. Without any such means of control, PKI systems are vulnerable to many kinds of abuse. An exemplary kind of abuse is called name squatting and refers to the preemptive reservation of names under the expectation of future profit (e.g., through auctioning off the name).
+
+Similarly to the Blockstack architecture, the approach taken by Bitforest is based on a data structure on top of a blockchain. However, contrary to Blockstack, Bitforest allows an organization to keep control over who participates in their namespaces. A namespace administrator can define mappings of names to indices in a binary search tree, where for each index, a log of all current and preceding values is stored.
+
+However, even though an administrator defines the mapping, only the owner of the name can update the associated value by appending to the log of the corresponding name. This maintains the critical property of identity retention, meaning that only the owner and no centralized entity can ever change any value that has been associated with a name.
+
+When clients need to look up the current value that corresponds to a name, they search for the corresponding index in the directory maintained by the namespace administrator. Querying the search tree for the given index yields the current value, while verifying the preceding log entries ensures the integrity of the name.
+
+
+\subsubsection{Web Certifications using Blockchain Technologies}
+
+One of the most important application areas of PKI systems is the certification of the integrity of domains in the world wide web. Through its exposure to a substantial number of people, the web certification system is one of the most widely exposed and has been subject to a number of critical vulnerabilities and attacks. Recent research tries to prevent some of these attacks by employing a blockchain-based web certification infrastructure that does not need to rely on trusted central entities.
+
+\paragraph{Ghazal}
+
+In the traditional web certification model, domains and their owners are validated by a number of certification authorities. The most popular means of validation is domain-validation, meaning that only the association between the public key and domain name is certified. Through several layers of indirection as described in (REF: threat model), this approach leads to a number of critical vulnerabilities.
+
+Ghazal proposes a new uni-authoritative paradigm for web certification and domain infrastructure. Concretely, no single authority should be needed to certify entities or register domains, as the blockchain itself could serve as the authoritative entity. This has the potential to solve many of the vulnerabilities occurring due to indirections and centralization in general.
+
+The foundation of the Ghazal prototype is built on a smart contract on the Ethereum blockchain. The contract specifies all procedures regarding the registration, transfer, and expiration of domains, as well as the associated values and certificates. Upon registration of a domain name in the .ghazal namespace, the owner can assign arbitrary values to the name (including public keys/certificates). To prevent abuse, registrations and other operations incur a fee that is paid to a block-hole account on the Ethereum network.
+
+While a uni-authoritative paradigm could solve some of the issues in today's web certification, browsers and operating systems would need to be extended to support such functionality. For example, to support the current Ghazal proposal, .ghazal domains would need to be recognized, processed, and verified differently from the remainder of sites on the web.
+
+It is also still a topic of research if and how a decentralized system could support domain lookups efficiently without the need for storing the entire blockchain on each client device. Furthermore, the approach taken by Ghazal is plagued by new issues that arise through the removal of all central entities. For example, if a domain owner's private key were to be lost, the corresponding name could never be reassigned.
+
+
+\paragraph{Certificate Recovation and Transparency}
+
+Certificate Transparency (CT) is a recent improvement to the traditional web certification model. When CT is enforced by a browser (e.g., modern versions of Chrome), the browser will only accept certificates without warning if they have been published to a public append-only log of certificate issuances. This measure has been introduced to counteract the malicious issuance of certificates by hacked CAs or through compulsion or malfeasance.
+
+While CT in traditional web certification can already improve web security significantly, it is still only a reactive measure, meaning that fraud can still occur but will probably be recognized more quickly. [7] propose that certificate issuance as well as handling the revocation of certificates could be moved to a blockchain-based system, preventing the issuing of malicious certificates entirely without the approval of the domain owner.
+
+In the solution proposed by [7], certificate authorities would not hold the solemn authority over certification. Instead, a certificate would only ever be valid if the associated web server cooperates in their publication by publishing the CA-issued certificate it to a public certificate issuance blockchain. Browsers would then only accept certificates that have been issued by a valid CA and published to the blockchain. By additionally enforcing a short expiration time on certificates, certificates that need to be revoked could simply not be renewed, causing the CA to issue a revocation.
+
+Similarly to the approach taken in Ghazal, a key challenge of such an approach is that clients need to maintain a copy of the certificate blockchain to verify the integrity of certificates.
+
+
+\subsubsection{Keyless Signature Infrastructures and Blockchain}
+TODO: KSI in general?
+TODO: Blockchain for KSI?
+
+
+[1] Usability Challenges
+[2] https://tools.ietf.org/html/rfc4210
+[3] Hacking PKI
+[4] https://www.namecoin.org/
+[5] Blockstack
+[6] Bitforest
+...
+[7] Certificate Transparency
+
 \textbf{Length: around 3 pages}
 
 \begin{itemize}
