@@ -1,74 +1,65 @@
 \subsection{Specific Applications}
 \label{subsec:03_applications}
 
-In this section we take a closer look at applications that are linked to cybersecurity on a secondary level: Here the Blockchain is not per se used to mitigate direct cybersecurity threats, but is used to make applications more robust, error-prone and less vulnerable. So the Blockchain does solve cybersecurity related issues, but in a more indirect way.
+In this section we take a closer look at applications that are linked to cybersecurity on a secondary level: Here the Blockchain is not per se used to mitigate direct cybersecurity threats, but is used to make applications more robust, error-prone and less vulnerable. 
 
 \subsubsection{Assessment Criteria}
-Below we want to introduce different scenarios of applications (existing or proof-of-work drafts) for the Blockchain technology and apart from a brief introduction of the challenges and problems of this specific field, answer the following questions:
+Below we want to introduce different scenarios of applications (implemented or proof-of-work drafts) for the Blockchain technology and apart from a brief introduction of the challenges and problems of this specific field, answer the following questions:
 \begin{enumerate}
 	\item What is the quality of this specific type of application regarding cybersecurity? 
-	\item How do they make use of the Blockchain Technology?
-	\item Is the BC really needed or could the problems be solved without it? 
+	\item How does the application make use of the Blockchain Technology?
+	\item Is the Blockchain really needed or could the problems be solved without it? 
 \end{enumerate}
-To answer question number 3 we are going to make use of the below schema presented by \citeauthor{Wust2017} in \cite{Wust2017}, that helps spliting real use cases from unnecessary ones.
+To answer question number 3 we are going to make use of the below schema presented by \citeauthor{Wust2017}, that helps deciding when the use a blockchain, what kind of blockchain and when a use is not necessary.
 \begin{figure}[ht!]
   \begin{center}
   \includegraphics[scale=0.6]{Talk7/img/app/BCorNot}
-  \end{center}
+ 	\end{center}
   \caption{Do you need a Blockchain?}
-  \label{blockchain_or_not}
+ 	\label{blockchain_or_not}
 \end{figure}
 
 \subsubsection{E-Voting}
-Problem statement: Foundation of every successful democracy, must be accessible for all eligible citicens. Most common systems today are paper-based voting systems, have two major drawbacks. 1. Not scalable, 2. reliant on the procedural security of officials conducting their jobs. Various combinations exist, multiple security vulnerabilities pop up, that lead to an enourmous risk of election rigging and fraud. The Blockchain as system that is verifiable, scalable and tamper-proof, seems to be a good idea as solution. 
+The ability to vote, is the very foundation of every successful democracy and must be accessible for all eligible citicens. Most common systems today are paper-based voting systems, have two major drawbacks.
+\begin{enumerate}
+	\item They do not scale very well
+	\item They rely on the procedural security of officials conducting their jobs.
+\end{enumerate}}
 
-Idea for solution: Use the Blockchain technology for a transparent and incorruptible database that cannot have a single point of failure or be controlled by a single entity. Answers question 1
+And while various e-Voting systems exist, they all come with multiple security vulnerabilities, that lead to an enourmous risks of election rigging and fraud. 
+The Blockchain on the other hand offers a transparent and incorruptible database that cannot have a single point of failure or be controlled by a single entity. It therefore immediately comes to mind when facing the above stated problems. Meanwhile new questions of privacy and authenticating the writers arise.
 
-Several systems exist up till today. Not all rely on the same amount of integration of the Blockchain itself. Different use cases either in theory or in practice have already been tested on smaller county elections or within private organizations \cite{BenAyed2017}.
+Several systems exist up till today that make use of the blockchain technology. They all differ regarding to the amount of integration and the role of the Blockchain. Different use cases either in theory or in practice have already been tested on smaller county elections or within private organizations. A quite exhaustive overview can be found in \cite{BenAyed2017}. According to \citeauthor{BenAyed2017} these system had the general problem, that single points of failure still existed and that critical parts of the code where closed.
+Most existing systems such as Votebook(Source) or Vote Watchers(Source) still dont fully integrate the blockchain but rather use it as underlying database system in the form of a private permissioned blockchain. Those systems still rely on paper ballots. In this case people have to authenticate by showing up in real life at a real world voting booth, that uses the Blockchain for its tamper-proofness, its ability to account as an auditing system and because each voting booths results can be aggregated with all other stations to generate a final result in the end.
+According to \citeauthor{Osgood2016} these systems follow the only doable approach, as it doesnt deny the fact, that voters have to identify somewhere
+Follow my Vote (Source) follows a fundamentally different approach, because it actually fully integrated the blockchains ability to act as a distributed ledger. Each voter installs a local "Voting Box" on his computer, authenticating via uploaded official documents through the organization that holds the election. Each voter requests ballot online and votes. Nevertheless, according to \citeauthor{Osgood2016} this idea is fundamentally flawed as authentication mechanisms are still an issue and the technique could scare off remote voters.
 
-Estonian I-Voting System: Estonia was the first country where citizens where able to cast their vote online and with an electronic national identification card based on the Blockchain technology
-Norwegian I-Voting System: In 2011 Norway used and eletronic remote voting system  for country council elections. The project was 2014 discontinued due to the fear of votes going public in case of a cyber attack.
-New South Wales iVote System: In 2015 New South Wales used a hybrid blockchain based voting system.
+Within all these systems, two fundamental questions seem to remain unanswered:
+\begin{enumerate}
+	\item \textbf{Authenticating users and the existence of a trusted third party}:	The riters of the blockchain are either directly or undirectly the voters themselves. To authenticate them, an organization that has all the data about them, is necessary. In most cases this leaves only the government as option. But according to the diagram by  \citeauthor{Wust2017} the use of Blockchain technology only makes sense if no thrusted third party exists. Therefore, it is the role of the government that causes the dilemma itself. If the non-existing trust in the government is the justification for the use of the Blockchain, the question arises whether the government can be trusted regarding the authentication of the voters. Even though a systematic rigging is harder to achieve with this approach, the problem remains at hand. 
+	\item \textbf{The user as single point of failure}: While the Blockchain does seem to be perfect for a voting situations, its justification remains questionable. Especially, because it still leaves the most important point of failure unprotected: The user himself. Even the most tamperproofed, blockchain-based voting system does not prevent hackers from a man-in-the-middle attack from a compromised end-device. 
+\end{enumerate}
 
-General problems with the different systems: Single point of failure and closeness of critical parts of the code
-
-
-Votebook (Quelle): Case study on Blockchain voting. No remote voting due to too many threats. Biggest problems: Authenticating user, voters computer as single point of failure DoS Attack.
-Ressembles todays systems, based on paper voting and voting stations that have the Blockchain as backend.
-System based on a permissioned, private blockchain with the voting stations as nodes
-Follow my Vote (Quelle): Fundamentally different than Votebook. Each voter installs a local "Voting Box" on his computer, authenticating via uploaded official documents through the organization that holds the election. Each voter requests ballot online and votes. Allow for early voting as well as altering the vote later on. Based on  \citeauthor{Osgood2016} optimistic but flawed approach: Authentication and scaring off remote voters is a problem.
-
-Vote Watchers (Quelle): Ressembles Votebook regarding the existence of paper ballots and real world voting stations. Each ballot contains three QR codes - 1 for BC address, 1 for ballot ID, 1 for election ID. Once ballot is scanned, the appropriate vote is sent to proper candidates unique address (like wallet) on an local offline BC of the voting station. After election is complete all data from local blockchain is put on a DVD and the machine is synchronized with the other machines for an evaluation of the voting results. 
-Advantage: Offline use, allows no interference from hackers, at the same time the votes for each candidate can be checked in "real time" (??) by a blockchain explorer.
-Uses BC only for tamper-proofness and public auditing, with everything else backed on paper ballots.
-
-Proposition of \citeauthor{Osgood2016} is therefore a system that still relies upon paper ballots, where people have to authenticate by showing up in real life at a real world voting booth, that uses the Blockchain for its tamper-proofness and ability to account as an auditing system
-
-Proposition of \citeauthor{BenAyed2017}:
-Tries to fulfill the following criteria: 1 (Authentication)Only people already registered to vote can cast votes. The system does not include registration and authentification has to be done externally. 2 (Anonymity) The system will not allow any links between voters votes and identities. 3 (Accuracy) Votes must be accurate and votes can neither be changed, nor duplicated, nor removed. 4 (Verifiablity): The system is verifiable to make sure all votes are counted correctly
-Limitations: User as single point of failure is still a problem and inability to change the vote once casted.
-
-General problem: Spotlight too much on the developed part of the world instead of focussing regions where a trust-less system is really used.
-
-Question 3: 
-In a voting scenario the authorities need the state of an election to be stored at all times during an election. For one, because of verifiability of the results in the end, but also because of any security related problems that could cause a shutdown of one or multiple of the voting stations. The writers are the voters and need to be known or in any way authenticated by a third party. In this scenario only an organization that has access to all the data is able to do that. In most cases this leaves only the government as a real option. In this scenario the voters per definition do not trust other voters as everyone is assumed to have a different desired output. 
-According to the diagram by  \citeauthor{Wust2017} the use of Blockchain technology therefore only makes sense in country where the government is not a thrusted third party. In which case a public permissioned Blockchain would be the best solution.
-Nevertheless, it is the role of the government that causes the dilemma itself. If the non-existing trust in the government is the justification for the use of the Blockchain, the question arises whether the government can be trusted regarding the authentication of the voters. Even though a systematic rigging is harder to achieve with this approach, the problem remains at hand. 
-
-While the Blockchain does seem to be perfect for a voting situations, its justification remains questionable. Especially, because it still leaves the most important point of failure unprotected: The user himself. Even the most tamperproofed, blockchain-based voting system does not prevent hackers from a man-in-the-middle attack from a compromised end-device. 
-
-To sum this chapter up: Many of the desired e-Voting properties that the Blockchain technology provides have trade-offs. The aspect of privacy is just one of many. On the other hand, no system has yet been proposed that has been shown to be secure, verifiable and private at the same time. The question of authentifiation comes into play as additional point of failure of the concept.
-Therefore: If a online trusted third party exists, the use of the blockchain is not necessary. If the government is trusted as far as the authentification of the voters goes, a public permissioned Blockchain can be a good fit. However the security of the system then relies on the interity of the validators. 
+Many of the desired e-Voting properties that the Blockchain technology provides have trade-offs. The aspect of how much privacy is is granted to the voter, is just one of many. On the other hand, no system has yet been proposed that has been shown to be secure, verifiable and private at the same time. The question of authentifiation comes into play as additional point of failure of the concept.
+Therefore, if a online trusted third party exists, the use of the blockchain is not necessary. If the government is trusted as far as the authentification of the voters goes, a public permissioned Blockchain can be a good fit. However the security of the system then relies on the interity of the validators. 
 If the government is trusted not at all, there exists no solution that overcomes that systematic flaw in a countries governance.
 
-The Blockchain can therefore be a solution if the question of authentification can be answered satisfactorily. Otherwise a traditional paper based voting system is as good as voting system including Blockchain based systems or systems that base on a trusted third party.
+The Blockchain can therefore be a solution if the question of authentification can be answered satisfactorily. Otherwise a traditional paper based voting system is as good as any voting system including Blockchain based systems or systems that base on a trusted third party.
+
+
+
+
+
+
+
+
+
 
 \subsubsection{Autonomous Vehicles, Smart Cities \& IoT}
-Smart vehicles are increasingly connected to infrastructure such as traffic management systems, other vehicles and also more generally the Internet, thus making the vehicles part of the Internet of Things (IoT). This developement brings obvious advantages, but also many challenges, especially in the area of cybersecurity. Malicious attacks on a vehicle endanger not only the vehicles data and the passengers of the vehicle itself, but also other road users. And while many conventional security and privacy methods exist to reduce the risk of an attack they tend to be ineffective due to centralization, unscalability and unsecure communication architectures \cite{DorriSteger2017}.
-Meanwhile the challenges on a secure and yet scalable system for connecting self-driving vehicles with not only each other, but also with other participating entities such as power stations and traffic management systems are many: They need to be scalable, secure and tamper-proof, private but at the same time accessible to specific other entities
+Smart vehicles are increasingly connected to infrastructure via the Internet, thus making them part of the IoT. This developement brings obvious advantages, but also many challenges, especially in the area of cybersecurity. Malicious attacks on a vehicle endanger not only the vehicles data and the passengers of the vehicle itself, but also other road users. And while many conventional security and privacy methods exist to reduce the risk of an attack they tend to be ineffective due to centralization, unscalability and unsecure communication architectures \cite{DorriSteger2017}.
+Meanwhile the challenges on a secure and yet scalable system for connecting self-driving vehicles with other infrastructure are many: They need to be scalable, secure and tamper-proof, private but at the same time accessible to specific entities, such as traffic management systems or an insurance.
 
-The Blockchain offers solutions by design to before mentioned problems: It works decentralized and is tamperproof at all times. The idea of connecting autonomous vehicles to a system based on the Blockchain technology immediately comes to mind.
-At the same time its design does not include the aspect of privacy per se. The mentioned challenges are tackled in various approaches. Therefore various approaches exist to connect self-driving vehicles with a blockchain-based architecture.
+The Blockchain offers solutions by design to before mentioned problems: It works decentralized and is tamperproof due to verifiability at all times. At the same time its design does not include the aspect of privacy per se. Therefore various approaches exist to connect self-driving vehicles with a blockchain-based architecture.
 
 Idea of \citeauthor{DorriSteger2017}: A decentralized privacy-preserving and secure blockchain-based architecture for the smart vehicle ecosystem. It bases on its own Blockchain called Lightweight Scalable Blockchain (LSB) that minimizes the overhead and increases scalablility as well as the throughput.
 It consists of clusters of nodes which are connected to the system via their Cluster Heads (CHs) also called Overlay Block Managers (OBMs).  All Transactions are broadcast to and verified by the OBMs. 
