@@ -13,7 +13,7 @@ Every smart contract on the blockchain lives at an address where the contracts e
 It is perfectly possible to write smart contracts that do nothing sensible, or even nothing at all, e.g. smart contract with a private state variable without getters or setters.
 Such a contract would do nothing but sit on the blockchain doing nothing. Smart contracts can inherit from smart contracts and interact with other smart contracts. 
 Smart contracts can even be sent ether to. Sending ether to a smart contract that does not provide functionality to retrieve those ethers means they are lost forever in the contract.
-This is crucial especially when designing contracts that implement business logic or any contracts for that matter. Smart contracts should be reviewed and audited carefully and tested for vulnerabilities else its weaknesses can be exploited like in the infamous``DOA' attack.
+This is crucial especially when designing contracts that implement business logic or any contracts for that matter. Smart contracts should be reviewed and audited carefully and tested for vulnerabilities else its weaknesses can be exploited like in the infamous ``DOA`` attack.
 
 Every transaction on the blockchain costs gas. Gas is expressed in ether. The miner that mines a transaction collects the gas associated with it, thus gas serves as an incentive for miners to mine and contribute to the network. There is a defined set of operations with their respective gas costs in the etherum yellow paper.
 Figure \ref{fig:smart_contract_fees} shows and excerpt of those costs.
