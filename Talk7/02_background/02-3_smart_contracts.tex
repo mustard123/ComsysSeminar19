@@ -47,8 +47,6 @@ Calling those functions will still use gas, because every operation in the EVM u
 In solidity those functions have the modifier ``pure'' or ``view''. Functions denoted with ``pure'' don't even read state variables. Both those functions can be run on a single node in the EVM and 
 nothing has to be propagated to the network thus no transaction has to be mined into the blockchain and no gas fee has to be paid.
 
-%\input{Talk7/solidity-highlighting.tex}	
-
 \begin{lstlisting}[language=Solidity]
   pragma solidity 0.4.16;
   
