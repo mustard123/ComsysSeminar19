@@ -6,11 +6,11 @@
 % Introduction describing the base of such attacks
 A DDoS (Distributed Denial of Service) attack has become a popular way to cripple a server of an institution or a private person and has shown to be an immense threat to the Internet. However, how is it possible for attackers to execute such attacks? The current internet design has its purpose of moving packets from a source to a known destination. The network itself minimally forwards all packages at minimal cost and generally outsources the complexity, including security, transport reliability and quality of service to the sender and receiver of the transported packages. This concept has been called the \textbf{end-to-end paradigm}. As no intermediary entity will step in, a party (either sender or receiver) can damage its opposition by using different attack possibilities such as IP Spoofing or the aforementioned DDoS attacks \cite{Mirkovic2004}. By faking the source address in the header of a packet, the sender can hide its identity. This security issue is called IP Spoofing \cite{Cloudflare2019}. As described in \citet{Mirkovic2004} following security issues raise opportunities of attacks:
 \begin{itemize}
-    \item Limited internet resources: Every host or service has hardware limitations that users may consume.
-    \item Highly interdependent internet security: No matter how secure a host may be configured, DDoS attacks always depend on the security of others within the Internet.
-    \item No collocation of intelligence and resources: The intermediate network has plentiful resources, as they forward package at minimal costs.  In contrast, the end networks only invest in as much bandwidth as they planned to use for their services.
-    \item No enforcement of accountability: As described above, attackers can escape from accountability by using IP Spoofing mechanisms.
-    \item Distribution of control: In a world of a distributed network, such as the Internet, multiple clients participate in that network. Each one of them has different security mechanisms. No global control entity can define a security policy or standard.
+  \item Limited internet resources: Every host or service has hardware limitations that users may consume.
+  \item Highly interdependent internet security: No matter how secure a host may be configured, DDoS attacks always depend on the security of others within the Internet.
+  \item No collocation of intelligence and resources: The intermediate network has plentiful resources, as they forward package at minimal costs.  In contrast, the end networks only invest in as much bandwidth as they planned to use for their services.
+  \item No enforcement of accountability: As described above, attackers can escape from accountability by using IP Spoofing mechanisms.
+  \item Distribution of control: In a world of a distributed network, such as the Internet, multiple clients participate in that network. Each one of them has different security mechanisms. No global control entity can define a security policy or standard.
 \end{itemize}
 % Additional reasons/base of attacks
 Since the number of connected devices has increased due to IoT devices such as connected cameras, or smart fridges, attackers have a growing capacity to take control of unsecured devices \cite{Rodrigues2017a}.
@@ -45,7 +45,7 @@ As presented in \ref{system_architecture} the architecture is composed of three 
 The web server of one autonomous system (AS) is a victim of a DDoS attack. Participants, that have proven ownership of their IP,  then create a smart contract that stores all IP addresses of attackers. Subscribed systems receive updated lists of IP addresses every 14 seconds, as this approaches underlying blockchain technology, Ethereum, creates new blocks within that timeframe. As soon as all other autonomous systems receive the attackers' list, various mitigation strategies may be triggered individualized to the specific domain \cite{Rodrigues2017}.
 \begin{figure}[ht]
   \begin{center}
-  \includegraphics[scale=0.6]{Talk7/img/ddos/collaborative_ddos_mitigation_system_architecture}
+    \includegraphics[scale=0.6]{Talk7/img/ddos/collaborative_ddos_mitigation_system_architecture}
   \end{center}
   \caption{System Architecture}
   \label{system_architecture}
@@ -69,7 +69,7 @@ Various approaches creating such proof will be described and discussed in this s
 Virtualized  Network Functions (VNF) can be deployed on any hardware without any additional configurations. The concept of Network Function Virtualization (NFV) can, therefore, provide an efficient solution by virtualizing a single function in the network as seen in \ref{ddos_marketplace_vnf}. All autonomous systems involved in the cooperative network could load the VNF image directly from the marketplace, which then provides the mitigation service hosted on virtual devices. By comparing the hashed checksum of the VNF image to a known value from the marketplace, the integrity of the VNF image will be checked. Additionally, local caching of all VNFs avoids large load on the marketplace. A big advantage of this approach is the high degree of isolation, as the VNFs consists of the minimal code which is necessary to handle the mitigation. Unfortunately, the target still needs to trust that the mitigator only runs untampered VNFs directly from the marketplace \cite{Mannhart2018}.
 \begin{figure}[ht]
   \begin{center}
-  \includegraphics[scale=0.5]{Talk7/img/ddos/cooperative_network_marketplace_vnfs}
+    \includegraphics[scale=0.5]{Talk7/img/ddos/cooperative_network_marketplace_vnfs}
   \end{center}
   \caption{Marketplace of Mitigation VNFs}
   \label{ddos_marketplace_vnf}
@@ -82,7 +82,7 @@ In contrast to the previous approach, illustrated in \ref{ddos_marketplace_vnf},
 As mitigators can use full network infrastructure, they are allowed to proof the mitigation using the available traffic data. By having a detailed log of network activities, they could prove the successful mitigation by identifying a reduction in the traffic from the attack source to the DDoS target. A mitigation-proof based on the log files decreases the complexity of the proof. The aforementioned log file has been created on an isolated system (which requires no additional trust) and therefore has to be checked about its integrity by a third party. A disadvantage comes with high-volume attacks which create large log files. These large files introduce additional delays as the log files have to be transferred for remote auditing.
 \begin{figure}[ht]
   \begin{center}
-  \includegraphics[scale=0.5]{Talk7/img/ddos/cooperative_network_secure_logging}
+    \includegraphics[scale=0.5]{Talk7/img/ddos/cooperative_network_secure_logging}
   \end{center}
   \caption{Secure logging}
   \label{ddos_secure_logging}
@@ -92,7 +92,7 @@ As mitigators can use full network infrastructure, they are allowed to proof the
 Since network virtualization technologies and Software-Defined Networks (SDN) have advanced in recent times, they both serve as a basis for network slicing as a service. When the attack target requests mitigation services, it gains access to the virtualized network slice of the mitigators autonomous system. The slice is then configured to provide access for all attacking IP addresses that have been requested within the mitigation request.
 \begin{figure}[ht]
   \begin{center}
-  \includegraphics[scale=0.5]{Talk7/img/ddos/cooperative_network_network_slicing}
+    \includegraphics[scale=0.5]{Talk7/img/ddos/cooperative_network_network_slicing}
   \end{center}
   \caption{Network Slicing}
   \label{ddos_network_slicing}
@@ -104,11 +104,11 @@ To conclude the work of this paper, the authors registered that none of the foll
 
 \subsubsection{Multi domain DDoS Mitigation based on blockchains}
 % \cite{Rodrigues2017a}
-Another approach repeatedly uses smart contracts and therefore blockchain as a mean to advertise information across multiple domains. The architecture as seen in figure \ref{ddos_multi_domain_architecture} involves the following entities: \textbf{Software-Defined Networks (SDN)} facilitate the development of customizable security management. \textbf{Network Function Virtualization (NFV)}, that are provisioned in generic hardware, strengthen security policies through virtualized functions. An Ethereum-based \textbf{blockchain} is a base for all participants of the cooperative network to advertise DDoS attacks within a timeframe of 14s, in which a new block is mined. At last a \textbf{smart Contracts} which is storing black or whitelisted IP addresses of customers \cite{Rodrigues2017a}.
+Another approach repeatedly uses smart contracts and therefore blockchain as a mean to advertise information across multiple domains. The architecture as seen in figure \ref{ddos_multi_domain_architecture} involves the following entities: \textbf{Software-Defined Networks (SDN)} facilitate the development of customizable security management. \textbf{Network Function Virtualization (NFV)} that are provisioned in generic hardware strengthen security policies through virtualized functions. An Ethereum-based \textbf{blockchain} is a base for all participants of the cooperative network to advertise DDoS attacks within a timeframe of 14s, in which a new block is mined. At last a \textbf{smart Contracts} which is storing black or whitelisted IP addresses of customers \cite{Rodrigues2017a}.
 
 \begin{figure}[ht]
   \begin{center}
-  \includegraphics[scale=0.5]{Talk7/img/ddos/multi_domain}
+    \includegraphics[scale=0.5]{Talk7/img/ddos/multi_domain}
   \end{center}
   \caption{Multi-domain architecture}
   \label{ddos_multi_domain_architecture}
