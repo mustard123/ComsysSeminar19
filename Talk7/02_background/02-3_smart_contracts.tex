@@ -18,11 +18,12 @@ This is crucial especially when designing contracts that implement business logi
 Every transaction on the blockchain costs gas. Gas is expressed in ether. The miner that mines a transaction collects the gas associated with it, thus gas serves as an incentive for miners to mine and contribute to the network. There is a defined set of operations with their respective gas costs in the etherum yellow paper.
 Figure \ref{fig:smart_contract_fees} shows and excerpt of those costs.
 
-\begin{figure}
-  \label{fig:smart_contract_fees}
-  \includegraphics{Talk7/img/smart_contracts/gas-fees.png}
+\begin{figure}[ht!]
+  \begin{center}
+  \includegraphics[scale=0.6]{Talk7/img/smart_contracts/gas-fees}
+ 	\end{center}
   \caption{Smart contract fees from ethereum yellow paper}
-  
+ 	\label{smart_contract_fees}
 \end{figure}
 
 Miners will generally prioritize transactions with a higher gas fee. The total gas fee to be paid is calculated by the gas price times the amount of gas to use. If the gas price for a transaction is set high, the transaction will be mined to the blockchain faster. If on the other hand the price is set low, miners will choose to mine other transactions first
@@ -46,7 +47,7 @@ Calling those functions will still use gas, because every operation in the EVM u
 In solidity those functions have the modifier ``pure'' or ``view''. Functions denoted with ``pure'' don't even read state variables. Both those functions can be run on a single node in the EVM and 
 nothing has to be propagated to the network thus no transaction has to be mined into the blockchain and no gas fee has to be paid.
 
-\input{Talk7/solidity-highlighting.tex}	
+%\input{Talk7/solidity-highlighting.tex}	
 
 \begin{lstlisting}[language=Solidity]
   pragma solidity 0.4.16;
