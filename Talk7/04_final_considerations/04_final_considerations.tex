@@ -3,21 +3,47 @@
 This sections goal is to summarize the key points of this paper and provide a discussion and outlook.
 \subsection{Summary}
 
-After giving some insight into cybersecurity, blockchain and smart contracts 
+After giving some insight into cybersecurity, blockchain and smart contracts, use of blockchain technology for combating DDoS attacks, for public key infrastructure (PKI), for Internet of Things (IoT) and specific applications are given.
+Blockchain technology is a good choice whenever there is a need for integrity and decentralization.
 
+For dealing with DDoS attacks, blockchains and smart contract can be used to serve as a decentralized database to store white -and blacklisted IP-addresses. Blockchains and smart contract also facilitates the sharing of information.
+
+In public key infrastructure, the danger is a certificate authority being hacked. Decentralizing  the public key infrastructure averts this danger. Namecoin is a blockchain with the goal to store all DNS-related naming information in a blockchain. There are solutions that build upon namecoin with the same goal but vary in implementation.
+With gazal, the traditional certification model is moved to the blockchain. Here the blockchain, more specifically a smart contract that specifies all procedures regarding the registration, transfer, and expiration of domains, as well as the associated values and certificates.
+
+In IoT, blockchain technology is proposed to help with the integrity of IoT datasets. IoT devices e.g sensors typically generate lots of data. Blockchain preserves the integrity of IoT generated datasets. Further, IoT and blockchain combination shows to be a useful
+combination in managing IoT devices. This can be along a supply chain where IoT devices change ownership or have to record transactions or in a smart home
+where access roles between all smart devices are defined in smart contracts, securing the IoT network from malicious tampering.
+
+Furthermore, blockchain technology can be used in various applications to enhance their security.
+In e-voting systems blockchains can be used as a transparent and incorruptible database.
+In smart cities an autonomous vehicles blockchain technology can enhance cybersecurity as well.
+The question remains wether blockchains are really needed and if they really solve a problem or simply shift the problem somewhere else.
+The next sections discusses this point.
 
 \subsection{Discussion}
 
-\textbf{Length: around 1 page}
+As shown in this paper there are various ways in which blockchain technology can enhance cybersecurity.
+But blockchains have their own limitations. They use a lot of power and don't scale well. This is a problem especially for IoT applications
+where devices are designed to use little power and have little storage. Therefore the blockchains are sometimes adapted to fit their use case better and for example use trust instead of proof of work.
+Before trying to apply blockchain technology to solve a problem, we think it is important to first reflect upon the question wether a blockchain is really needed as shown in the flowchart in figure \ref{blockchain_or_not}.
+Fundamentally blockchains cannot solve problems of human nature. In e-voting, if the government itself is not trusted, how can one trust the blockchain set up by the government?
 
-\begin{itemize}
-  \item discuss any open questions about the contents
-\end{itemize}
+Nevertheless, there is definitely a place for blockchain technology for helping with cybersecurity as this paper has shown by collecting examples thereof.
 
-\subsection{Outlook}
 
-\textbf{Length: around 1 page}
 
-\begin{itemize}
-  \item describe possible topics of further research
-\end{itemize}
+
+% \textbf{Length: around 1 page}
+
+% \begin{itemize}
+%   \item discuss any open questions about the contents
+% \end{itemize}
+
+% \subsection{Outlook}
+
+% \textbf{Length: around 1 page}
+
+% \begin{itemize}
+%   \item describe possible topics of further research
+% \end{itemize}
