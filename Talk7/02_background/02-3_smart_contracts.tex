@@ -1,8 +1,6 @@
 \subsection{Smart Contracts}
 \label{subsec:02_smart_contracts}
 
-\textbf{Length: around 2 pages}
-
 This section looks at the concept of smart contracts on the example of Ethereum.
 Ethereum is a blockchain ''with built-in programming language'', or in other words a ''consensus-based globally executed virtual machine''.
 The Ethereum project started in 2015 and has gained popularity since then. It is second place in terms of market capitalization according to coinmarketcap.com, right after bitcoin and followed by ripple.
@@ -23,7 +21,7 @@ Figure \ref{fig:smart_contract_fees} shows and excerpt of those costs.
     \includegraphics[scale=0.6]{Talk7/img/smart_contracts/gas-fees}
   \end{center}
   \caption{Smart contract fees from ethereum yellow paper}
-  \label{smart_contract_fees}
+  \label{fig:smart_contract_fees}
 \end{figure}
 
 Miners generally prioritize transactions with a higher gas fee. The total gas fee to be paid is calculated by the gas price times the amount of gas to use. If the gas price for a transaction is set high, the transaction is mined to the blockchain faster. If on the other hand the price is set low, miners choose to mine other transactions first
@@ -34,11 +32,11 @@ Miners can only put so many transactions in a block that block gas limit is not 
 
 The following list sums up the key terms mentioned above
 \begin{itemize}
-  \item {gas: }
-  \item {gas prize:}
-  \item {gas limit:}
-  \item {transaction fee:}
-  \item {block gas limit:}
+  \item {gas: How much gas a transaction needs }
+  \item {gas prize: How much ether a unit of gas costs, determined by the market}
+  \item {gas limit: Maximum amount of gas to use up for a transaction}
+  \item {transaction fee: Gas used times gas price}
+  \item {block gas limit: Maximum sum of gas of all transactions in a block}
 
 \end{itemize}
 
@@ -47,14 +45,16 @@ Calling those functions will still use gas, because every operation in the EVM u
 In solidity those functions have the modifier ``pure'' or ``view''. Functions denoted with ``pure'' don't even read state variables. Both those functions can be run on a single node in the EVM and
 nothing has to be propagated to the network thus no transaction has to be mined into the blockchain and no gas fee has to be paid.
 
-\begin{lstlisting}[language=Solidity]
-  pragma solidity 0.4.16;
+
+
+\begin{lstlisting}[language=Solidity,caption={Smart contract example},,label={solidity_example}]
+  pragma solidity 0.5.0;
 
   contract TestContract {
 
     string private myString = "foo";
 
-    function getString() constant returns (string) {
+    function getString() view returns (string) {
         return myString;
     }
 
@@ -63,3 +63,10 @@ nothing has to be propagated to the network thus no transaction has to be mined 
     }
   }
   \end{lstlisting}
+
+In the smart contract example \ref{solidity_example}, the functions ``setString'' modifies the state, namely the variable ``myString'', thus a transaction needs to be recorded in the blockchain and gas has to be paid.
+The function ``getString'' on the other hand is denoted with the keyword ``view'', no state variables are modified so no transactions are required and no gas fee has to be paid.
+
+Smart contracts allow programming on the blockchain which opens up a multitude of possibilities also in the context of cyber security for which the following sections discuss some solutions.
+
+
