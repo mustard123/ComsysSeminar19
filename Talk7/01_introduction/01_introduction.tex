@@ -1,33 +1,15 @@
 \section{Introduction}
 
-\textbf{Length: around 2 pages}
+Since the initial development of computing and communication systems, their security has been an ever-growing concern. More and more data is being collected and shared between entities and third-parties. Protecting this data and the underlying systems is of utmost importance for our modern internet-based economy. Especially companies are bound by increasingly strict laws and need their customer base to be confident in data privacy to be able to survive.
 
-\begin{itemize}
-  \item Describe current issues in cybersecurity
-        \begin{itemize}
-          \item Motivate the topic in general
-        \end{itemize}
-  \item Provide some reasoning on the evolution of bitcoin
-        \begin{itemize}
-          \item Money transfer security
-          \item Intermediaries
-        \end{itemize}
-  \item Provide an outline of the paper
-        \begin{itemize}
-          \item Content structure
-          \item Covered topics
-        \end{itemize}
-\end{itemize}
+The evolution of blockchain systems over the past decade has led to research on a broad range of application areas in computer science as well as in other contexts. Amongst many others, the applications of blockchain technologies for the purposes of securing systems and data has been an area of very recent research. The primary goal of this work is, therefore, to provide an overview of the key areas where such technologies could be applied in future systems, as well as to build an intuition for where it would not be a valuable solution.
 
-Due to the increase of data collection on the internet and the growing reliance on computer systems, protecting data as well as systems has become to play a significant role. The rise of blockchain systems in the past decade has naturally led security researchers to start evaluating how traditional infrastructure can be protected in a blockchain context. The primary goal of this work is, therefore, to investigate and summarize such approaches as far as they have been developed in recent years.
+To establish a solid foundation, section \ref{sec:02_background} first provides a summary of the most important basic concepts and technical background. More specifically, section \ref{subsec:02_cybersecurity} shortly goes into the traditional concepts of cybersecurity and the main threat models that have been developed in the area (e.g., the CIA triangle). Section \ref{subsec:02_blockchain} then presents the basics of blockchain on the example of Bitcoin, while section \ref{subsec:02_smart_contracts} summarizes the concept of smart contracts, an evolution based on the core infrastructure of the blockchain.
 
-To establish a solid foundation of knowledge, section \ref{sec:02_background} provides a summary of the most important basic concepts and background. More specifically, section \ref{subsec:02_cybersecurity} goes into the traditional concepts of cybersecurity and the main threat models that have been developed in the past decades. Section \ref{subsec:02_blockchain} then presents the basics of blockchain on the example of Bitcoin, while section \ref{subsec:02_smart_contracts} summarizes the idea of smart contracts that have evolved from blockchain technologies.
+On a lower, more technical level, this work focuses on the applications of blockchain for the prevention of DDoS attacks, as well as the improvement of key parts of the internet security infrastructure. Distributed denial of service attacks (DDoS) are a possibility for attackers to flood the service of a company. Such attacks can lead to issues regarding availability (e.g., causing service downtimes) and thus result in significant business forfeits. Approaches to protecting networks against such DDoS attacks using blockchain technologies are summarized in section \ref{subsec:03_ddos}.
 
-On a lower, more technical level, this work focuses on the prevention of DDoS attacks, as well as the improvement of parts of the internet infrastructure. Distributed denial of service attacks (DDoS) which figure as an extension of denial of service attacks (DoS) are a possibility for attackers to overflood the service of a company. Such attacks could lead to a long downtime of a system and thus result in a major business forfeit. Approaches to DDoS protection using blockchain technologies are summarized in section \ref{subsec:03_ddos}.
+A critical part of the internet and communications security in today's environment is the existence of communication methods that participants trust to deliver messages securely and confidently. Public Key Infrastructures (PKI) provide the backbone for many of these methods. Existing PKI architectures often rely on a centralized infrastructure, which enables many kinds of attacks and also makes the entire infrastructure susceptible to DDoS. Researchers have recently started investigating possible improvements of PKI with blockchain technologies. We provide an overview of such research in section \ref{subsec:03_pki}.
 
-A critical part of the internet and communications security in today's environment is the existence of secure communication methods utilizing encryption and certification. Public Key Infrastructures provide the backbone for many of these methods. However, they often rely on kind of centralized infrastructure, which enables many kinds of attacks and makes the entire infrastructure susceptible to DDoS. Researchers have recently started investigating possible improvements of said infrastructure with blockchain technologies. We provide an overview of said research in section \ref{subsec:03_pki}.
+The emergence of the Internet of Things (IoT) and a further growing market for pervasively interconnected devices provide exciting challenges and use cases for the usage of blockchain. Section \ref{subsec:03_IoT} reviews some of the critical security and privacy challenges of IoT, as well as how they can be mitigated with blockchain technology. It then provides an overview of how blockchain can help with proving the integrity of IoT generated data (e.g., smart meters). We also go into how blockchain can be used to secure a smart home and other ways how blockchain can strengthen the security of IoT in the current state of research.
 
-The emergence of the Internet of Things (IoT) and a further growing market in interconnected devices provide exciting challenges and use cases for the usage of blockchain in the context of securing IoT.\\
-Section \ref{subsec:03_IoT} reviews some security and privacy challenges of IoT and how they can be mitigated with blockchain technology. It provides an overview how blockchain can help with proving the integrity of IoT generated data such as smart meters or along a supply chain, how blockchain can be used to secure a smart home, and other ways how blockchain can strengthen the security of IoT in the current state of research.
-
-The goal of this survey is then not only to cover simple theoretical concepts or frameworks but also to shed some light on existing real-world applications or proposed system architectures that are currently being developed (\ref{subsec:03_applications}). These applications show us whether the theoretical ideas and concepts are applicable in the real world as well as the associated problems and issues that arise in addition to that.
+The goal of this survey is then not only to cover simple theoretical concepts or frameworks but also to shed some light on existing real-world applications or proposed system architectures that are currently being developed (\ref{subsec:03_applications}). These applications show us whether the theoretical concepts apply to the real world as well as what kinds of problems and issues arise in addition to that.
