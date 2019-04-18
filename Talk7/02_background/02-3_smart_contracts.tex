@@ -3,14 +3,14 @@
 
 This section looks at the concept of smart contracts on the example of Ethereum.
 Ethereum is a blockchain ''with built-in programming language'', or in other words a ''consensus-based globally executed virtual machine''.
-The Ethereum project started in 2015 and has gained popularity since then. It is second place in terms of market capitalization according to coinmarketcap.com, right after bitcoin and followed by ripple.
+The Ethereum project started in 2015 and has gained popularity since then. It is second place in terms of market capitalization according to coinmarketcap.com, right after bitcoin and followed by ripple \cite{coinmarketcap}.
 
 Nodes in the Ethereum network make up the Ethereum Virtual Machine (EVM). Smart contracts are written in the programming language solidity. They get compiled to bytecode that the EVM can understand.
 Once deployed on the blockchain, the code cannot be changed. Deploying smart contracts means mining them into the blockchain, thus deploying smart contracts costs a fee like every other transaction. Once they are there, they are part of the blockchain history. Every smart contract on the blockchain lives at an address where the contracts exposed functions and variables can interact with. Smart contracts can inherit from smart contracts and interact with other smart contracts.
 
-Smart contracts can also be sent ether to. Sending ether to a smart contract that does not provide functionality to retrieve those ethers means they are lost forever in the contract. This is crucial especially when designing contracts that implement business logic or any contracts for that matter. Smart contracts should be reviewed and audited carefully and tested for vulnerabilities else its weaknesses can be exploited like in the infamous ``DOA`` attack.
+Smart contracts can also be sent the cryptocurrency ether to. Sending ether to a smart contract that does not provide functionality to retrieve those ethers means they are lost forever in the contract. This is crucial especially when designing contracts that implement business logic or any contracts for that matter. Smart contracts should be reviewed and audited carefully and tested for vulnerabilities else its weaknesses can be exploited like in the infamous ``DAOgi`` attack.
 
-Every transaction on the Ethereum blockchain costs a fee called gas. Gas is expressed in ether. The miner that mines a transaction collects the gas associated with it, thus gas serves as an incentive for miners to mine and contribute to the network. There is a defined set of operations with their respective gas costs in the Ethereum yellow paper.
+Every transaction on the Ethereum blockchain costs a fee called gas. Gas is expressed in ether. The miner that mines a transaction collects the gas associated with it, thus gas serves as an incentive for miners to mine and contribute to the network. There is a defined set of operations with their respective gas costs in the Ethereum yellow paper \cite{ethereumyellowpaer}.
 Figure \ref{fig:smart_contract_fees} shows and excerpt of those costs.
 
 \begin{figure}[ht!]
@@ -28,7 +28,7 @@ If the gas limit is too little, the computation will run out of gas before it is
 
 Miners can only put so many transactions in a block that block gas limit is not exceeded. This is also not a fixed value as miners can vote with each block to increase or decrease the block gas limit by a certain amount. Block gas limit serves to keep propagation of blocks and transaction time low by essentially limiting the size of the blocks.
 
-The following overview sums up the key terms as mentioned above:
+The following overview sums up the key terms as mentioned above \cite{blockgeeks}:
 \begin{itemize}
   \item {\textbf{gas}: How much gas a transaction needs }
   \item {\textbf{gas prize}: How much ether a unit of gas costs, determined by the market}
@@ -41,12 +41,12 @@ The following overview sums up the key terms as mentioned above:
 In fact, not all smart contract interactions cost gas. Functions that do not modify the state of a contract, and hence the blockchain, do not need to be mined by a miner.
 Calling those functions will still use gas, because every operation in the EVM uses gas, but that gas is refunded immediately as calling those functions does not result in a transaction.
 In solidity those functions have the modifier ``pure'' or ``view''. Functions denoted with ``pure'' don't even read state variables. Both those functions can be run on a single node in the EVM and
-nothing has to be propagated to the network thus no transaction has to be mined into the blockchain and no gas fee has to be paid.
+nothing has to be propagated to the network thus no transaction has to be mined into the blockchain and no gas fee has to be paid\cite{blockgeeks}.
 
 \begin{lstlisting}[language=Solidity,caption={Smart contract example},,label={solidity_example}]
   pragma solidity 0.5.0;
 
-  contract TestContract {
+  contract MyContract {
 
     string private myString = "foo";
 
