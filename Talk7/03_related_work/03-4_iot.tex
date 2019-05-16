@@ -27,7 +27,7 @@ To preserve privacy, they emphasize the use of an automated tool that anonymizes
 
 
 Second, to ensure firmware integrity, they also propose a system with RIM checking and Blockchain.
-Firmware is considered the root of trust. Starting with the bootloader, it checks wether the next software (e.g., the operating system) can be loaded.
+Firmware is considered the root of trust. Starting with the bootloader, it checks wether the next software (\textit{e.g.}, the operating system) can be loaded.
 But firmware must allow for updates, which opens up a window to compromise the RIM of the firmware. By using Blockchain, the firmware history can be tracked and compromised devices can be detected and forced to rollback their
 version to the last valid entry.
 
@@ -54,6 +54,6 @@ The other list holds the public keys of smart homes that are allowed to be acces
 Finally, the cloud storage stores and shares data of the smart home devices.
 
 The local Blockchain in the smart homes keeps track of transactions and has a policy header to enforce users' policy for incoming and outgoing transactions.
-The policy header consist of four parameters. The first is the requesters public key, the second is the requested action (e.g., to store or access data in the cloud storage), the third is the ID of the device inside the smart home,
-and the last parameter is to indicate the action that should be done for the transaction that matches with the previous properties (e.g., deny or allow the transaction).
+The policy header consist of four parameters. The first is the requesters public key, the second is the requested action (\textit{e.g.}, to store or access data in the cloud storage), the third is the ID of the device inside the smart home,
+and the last parameter is to indicate the action that should be done for the transaction that matches with the previous properties (\textit{e.g.}, deny or allow the transaction).
 The miner in each smart homes authenticates, authorizes, and audits transactions.
