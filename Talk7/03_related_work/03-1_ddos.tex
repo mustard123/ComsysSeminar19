@@ -35,14 +35,14 @@ The Internet Engineering Task Force (IETF) additionally is proposing a protocol 
 
 \subsubsection{DDos Mitigation with Smart Contracts}
 % \cite{Rodrigues2017}
-This concept investigates a possibility to mitigate a DDoS attack in a fully decentralized manner using smart contracts and their underlying blockchain. These technologies allow sharing information (detection and mitigation mechanisms as well as IP addresses) about attacks in an automated and decentralized system \cite{Rodrigues2017}.
+This concept investigates a possibility to mitigate a DDoS attack in a fully decentralized manner using smart contracts and their underlying Blockchain. These technologies allow sharing information (detection and mitigation mechanisms as well as IP addresses) about attacks in an automated and decentralized system \cite{Rodrigues2017}.
 
-As described in Section~\ref{subsec:02_smart_contracts}, a smart contract is a software that is made to help contracts being able to execute and verify on their own. To do so, there has to be an infrastructure that implements, verifies and enforces the negotiation of those smart contracts by using particular computer protocols and that runs fully decentralized. As known from Section~\ref{subsec:02_Blockchain}, a blockchain ensures permanent storage and provides obstacles to manipulation of content and is thus an ideal infrastructure for smart contracts. Nodes participating in the blockchain run a smart contract by executing and validating a script and thereafter storing the contract and the results in a new block \cite{Rodrigues2017}.
+As described in Section~\ref{subsec:02_smart_contracts}, a smart contract is a software that is made to help contracts being able to execute and verify on their own. To do so, there has to be an infrastructure that implements, verifies and enforces the negotiation of those smart contracts by using particular computer protocols and that runs fully decentralized. As known from Section~\ref{subsec:02_Blockchain}, a Blockchain ensures permanent storage and provides obstacles to manipulation of content and is thus an ideal infrastructure for smart contracts. Nodes participating in the Blockchain run a smart contract by executing and validating a script and thereafter storing the contract and the results in a new block \cite{Rodrigues2017}.
 
 % Proposed System Architecture
-As presented in Section~\ref{system_architecture} the architecture is composed of three components. The customers report IP addresses to the blockchain via smart contracts. The Autonomous Systems (AS) retrieve lists containing these addresses and implement DDoS mitigation techniques. All participants interact with the underlying blockchain \cite{Rodrigues2017}.
+As presented in Section~\ref{system_architecture} the architecture is composed of three components. The customers report IP addresses to the Blockchain via smart contracts. The Autonomous Systems (AS) retrieve lists containing these addresses and implement DDoS mitigation techniques. All participants interact with the underlying Blockchain \cite{Rodrigues2017}.
 
-The web server of one AS is a victim of a DDoS attack. Participants that have proven ownership of their IP then create a smart contract that stores all IP addresses of attackers. Subscribed systems receive updated lists of IP addresses every 14 seconds, as the underlying blockchain, Ethereum, creates new blocks within that timeframe. As soon as all other autonomous systems receive the list of attackers, various mitigation strategies may be triggered tailored to the specific domain \cite{Rodrigues2017}.
+The web server of one AS is a victim of a DDoS attack. Participants that have proven ownership of their IP then create a smart contract that stores all IP addresses of attackers. Subscribed systems receive updated lists of IP addresses every 14 seconds, as the underlying Blockchain, Ethereum, creates new blocks within that timeframe. As soon as all other autonomous systems receive the list of attackers, various mitigation strategies may be triggered tailored to the specific domain \cite{Rodrigues2017}.
 \begin{figure}[ht]
   \begin{center}
     \includegraphics[scale=0.6]{Talk7/img/ddos/collaborative_ddos_mitigation_system_architecture}
@@ -52,7 +52,7 @@ The web server of one AS is a victim of a DDoS attack. Participants that have pr
 \end{figure}
 
 % Conclusion
-This approach uses an already existing and publicly available distributed infrastructure to adumbrate IP addresses that are either white- or blacklisted. This approach serves well as an additional security mechanism to existing DDoS defense systems across multiple domains by using an Ethereum blockchain without transferring the control of their internal network to a third party. For large-scale attacks, this approach currently is not supported well, but this issue will be addressed in future work \cite{Rodrigues2017}.
+This approach uses an already existing and publicly available distributed infrastructure to adumbrate IP addresses that are either white- or blacklisted. This approach serves well as an additional security mechanism to existing DDoS defense systems across multiple domains by using an Ethereum Blockchain without transferring the control of their internal network to a third party. For large-scale attacks, this approach currently is not supported well, but this issue will be addressed in future work \cite{Rodrigues2017}.
 
 
 \subsubsection{Mitigation-as-a-service in Cooperative Network Defenses}
@@ -98,9 +98,9 @@ Since network virtualization technologies and Software-Defined Networks (SDN) ha
 
 As a final consideration, the authors remarked that none of the preceding methods could on its own be used to address a trade-off between practicability and security when qualitatively comparing all four approaches. However, combining some of these methods could lead to a practical as well as secure solution \cite{Mannhart2018}.
 
-\subsubsection{Multi domain DDoS Mitigation based on blockchains}
+\subsubsection{Multi domain DDoS Mitigation based on Blockchains}
 % \cite{Rodrigues2017a}
-Another approach repeatedly uses smart contracts as a means of advertising information across multiple domains. The architecture as seen in figure \ref{ddos_multi_domain_architecture} involves the following entities: \textbf{Software-Defined Networks (SDN)} facilitate the development of customizable security management; \textbf{Network Function Virtualization (NFV)} that are provisioned in generic hardware strengthen security policies through virtualized functions; an Ethereum-based \textbf{blockchain} is a base for all participants of the cooperative network to advertise DDoS attacks within a timeframe of 14s, in which a new block is mined; and a \textbf{smart contract} that stores black or whitelisted IP addresses of customers \cite{Rodrigues2017}.
+Another approach repeatedly uses smart contracts as a means of advertising information across multiple domains. The architecture as seen in figure \ref{ddos_multi_domain_architecture} involves the following entities: \textbf{Software-Defined Networks (SDN)} facilitate the development of customizable security management; \textbf{Network Function Virtualization (NFV)} that are provisioned in generic hardware strengthen security policies through virtualized functions; an Ethereum-based \textbf{Blockchain} is a base for all participants of the cooperative network to advertise DDoS attacks within a timeframe of 14s, in which a new block is mined; and a \textbf{smart contract} that stores black or whitelisted IP addresses of customers \cite{Rodrigues2017}.
 
 \begin{figure}[ht]
   \begin{center}
@@ -118,7 +118,7 @@ This architecture is based on key technologies such as SDN and NFV. Blockchain a
 % https://github.com/savf/BloSS
 % \cite{Rodrigues2019}
 
-Similarly to \cite{Rodrigues2017}, this approach deals with cooperative, multi-domain DDoS defense systems, but it presents a Blockchain Signaling System (BloSS) which is a somewhat technical approach of deploying hardware simplifying signals of DDoS attacks. Principal components for a BloSS are smart contracts that describe how information has to be transferred between AS and decentralized applications that include parameters defining the interaction of AS. Additionally, a consortium based blockchain, differentiating from the public and private blockchains, serves as an intermediary level of confidence.
+Similarly to \cite{Rodrigues2017}, this approach deals with cooperative, multi-domain DDoS defense systems, but it presents a Blockchain Signaling System (BloSS) which is a somewhat technical approach of deploying hardware simplifying signals of DDoS attacks. Principal components for a BloSS are smart contracts that describe how information has to be transferred between AS and decentralized applications that include parameters defining the interaction of AS. Additionally, a consortium based Blockchain, differentiating from the public and private Blockchains, serves as an intermediary level of confidence.
 
 An AS creates a wallet and notifies a smart contract that stores some information. The smart contract then implements a method to reclaim addresses published by other systems by querying a central smart contract. This central contract is used to configure all involved smart contracts with updated information on their managed IP networks, as the addresses of the involved wallets are immutable. In order to prevent free-riding peers (parties that only consume without any contribution), an incentive mechanism needs to be set by defining tokens \cite{Rodrigues2019}.  % TODO what do they do?
 
